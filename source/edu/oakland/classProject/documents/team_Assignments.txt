@@ -1,10 +1,10 @@
 /**
 * Class Project ("The Guessing Game") Team Assignments
-* @created DD_150728_1530
-* @edited  DD_150728_1530
+* @created DD_150728_1537
+* @edited  DD_150728_1537
 */
 
-[VPE]Leon Brooks
+[VPE]LB Leon Brooks
 
 [LSI- PM]JL Josh Levoir
 [LSI-APM]AC Austin Copeman
