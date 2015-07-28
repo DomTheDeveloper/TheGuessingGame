@@ -1,7 +1,7 @@
 /**
 * Output requirements for display team
 * @created DD_150728_1530
-* @edited  DD_150728_1530
+* @edited  DD_150728_1700
 */
 
 Welcome to The Guessing Game!
@@ -14,12 +14,12 @@ Select an option:
 Enter the upper bound integer (inclusive). [1-upperBound]
 upperBound: >* 1023
 ----------------------------------------
-The device will guess your number in {numOfGuesses} guesses!
+The device will find the correct number in {maxNumOfGuesses} guesses or less.
 
-Choose a number between 1 and {upperBound}, inclusive.
-Do not enter your number into the system. Keep it in your head.
+Select a number between 1 and {upperBound}.
+DO NOT COMMUNICATE THE NUMBER CHOSEN TO THE DEVICE IN ANY WAY.
 
-Press the enter key when you have chosen a number in your head:
+Press the enter key once you have selected a number between 1 and {upperBound}.
 >* [ENTER]
 ----------------------------------------
 Guess #{currentGuessIteration}
@@ -40,9 +40,9 @@ Select an option:
 [=]: My number is equal
 >* =
 ----------------------------------------
-The system has guessed your number!
-Your number is {currentGuess}!
-----------------------------------------
+The system has guessed your number, which is {currentGuess}.
+The device found the correct number in {currentGuessIteration} guesses.
+
 Select an option:
 [P]: Play
 [Q]: Quit
