@@ -17,7 +17,7 @@
 [APP-LE]GK Greg Kabacinski
 
 [APP-CTs] (subject to change):
-edu.oakland.classProject.production.Main
+edu.oakland.classProject.production.Core
 #1 RW Renne Wise
 #1 DC David Chong
 
@@ -25,7 +25,7 @@ edu.oakland.classProject.production.Display
 #2 AT Ashley Taylor
 #2 BT Bartlomiej Tokarz
 
-edu.oakland.classProject.test.MainTest
+edu.oakland.classProject.test.CoreTest
 #3 CL Casey Letarte
 #3 MS Najuka Sakpal
 
