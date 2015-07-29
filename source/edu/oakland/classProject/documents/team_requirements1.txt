@@ -1,0 +1,13 @@
+System Requirements
+1. A means to start the application
+2. A means to quit the application
+3. A means to get input from the User
+4. A means for the user to select a number
+6. A means for the user to check if the guess displayed by the device is lower, equal or higher number the user picked
+7. System shall display the final guess: should be the number the user was thinking of
+8. (Extra credit) A means for the user to set the upper bound
+9. The upper bound (non extra credit) shall be 1024
+10. The user shall choose a number between 1 and 1023
+11. (Extra credit) Use binomial theorum to log base 2 to determine number of guesses, round up to whole number if log is a decimal
+12. Provide a means to keep track of guess number of the machine(Ex. the 2nd guess, the 10th guess)
+13. A calculated upper bound (user number picked -1)
