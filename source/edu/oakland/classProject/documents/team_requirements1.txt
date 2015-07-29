@@ -4,7 +4,7 @@ System Requirements
 3. A means to get input from the User
 4. A means for the user to select a number
 6. A means for the user to check if the guess displayed by the device is lower, equal or higher number the user picked
-7. System shall display the final guess: should be the number the user was thinking of
+7. System shall display the final guess: should be the number the user was thinking of (we hope)
 8. (Extra credit) A means for the user to set the upper bound
 9. The upper bound (non extra credit) shall be 1024
 10. The user shall choose a number between 1 and 1023
