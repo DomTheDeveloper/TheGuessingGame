@@ -6,9 +6,9 @@ If the program is selected to play, the user shall be prompted for an upper boun
 
 If the program is selected to quit, the program shall exit.
 
-When provided with an upper bound, the program shall determine the number of guesses required and make its first guess.
+When provided with an upper bound, the program shall determine the number of guesses required and display the valid range of numbers that the user can select.
 
-The program shall prompt the user as to whether the guess if lower, higher, or equal to the user's selected number.
+The program shall display its guess, which guess number it is, and prompt the user as to whether the guess is lower, higher, or equal to the user's selected number.
 
 If the user selects higher or lower, the program shall make a new guess and prompt the user about the new guess.
 
