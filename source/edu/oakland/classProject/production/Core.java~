@@ -14,13 +14,11 @@ package edu.oakland.classProject.production
 *@since version 1.0
 */
 
-
-// upperbound 
 public class Core {
 	/**
 	*TODO: class variable definitions here
 	*/  
-	private static inputUpperRange = 1024;	// The maximum number the user can pick //made final in mian
+	private static final inputUpperRange = 1024;	// The maximum number the user can pick
 	private static calcUpperRange;		// Adjusts the upper range so the user can pick
 						// a number from 0-1023.
 	private static maxNumGuesses; 		// The number of guesses the System is
@@ -28,8 +26,6 @@ public class Core {
 						// the number correctly in the guesses
 						// allotted to it, the System loses and
 						// the user wins.
-						
-	private static currentGuess;
 	
 	/**
 	* Returns the maximum number the in the range of numbers that the
@@ -59,9 +55,7 @@ public class Core {
 		maxNumGuesses = (int)(Math.log(inputUpperRange)/Math.log(2));
 	}
 	
-	public int getNumGuesses() {
-	    return maxNumGuesses;
-	}
+	
 	
 	/**
 	* Involves the game started. FUNCTIONALITY NOT
@@ -99,15 +93,12 @@ public class Core {
 	//}
 	
 	/**
-	* 
+	* Provides a binary search algorithm that allows
+	* the System to guess the number the user picked.
 	*/
-	public void computeLowerGuess() {
-	    currentGuess = previousGuess - (2^totallguesses/2^guess) - (currentnthguess)
-	}
+	//void computeSystemGuess() {
 	
-	public void computeHigherGuess() {
-	    currentGuess = previousGuess + (2^totallguesses/2^guess) - (currentnthguess)
-	}
+	//}
 	
 	/**
 	* Returns the maximum number of guesses the System is 
@@ -127,4 +118,3 @@ public class Core {
 	}
 
 }
-
