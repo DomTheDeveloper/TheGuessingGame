@@ -30,6 +30,8 @@ public class Core {
 						// the user wins.
 						
 	private static currentGuess;
+	private static previousGuess = 0;
+	private static nthGuess = 1;
 	
 	/**
 	* Returns the maximum number the in the range of numbers that the
@@ -56,7 +58,7 @@ public class Core {
 	}
 	
 	public void setNumGuesses() {
-		maxNumGuesses = (int)(Math.log(inputUpperRange)/Math.log(2));
+	    maxNumGuesses = (int)(Math.log(inputUpperRange)/Math.log(2));
 	}
 	
 	public int getNumGuesses() {
@@ -64,50 +66,14 @@ public class Core {
 	}
 	
 	/**
-	* Involves the game started. FUNCTIONALITY NOT
-	* OFFICIALLY DETERMINED YET.
-	*/
-	public void playGame() {
-	
-	}
-	
-	/**
-	* Involves the game started. FUNCTIONALITY NOT
-	* OFFICIALLY DETERMINED YET.
-	*/
-	public void quitGame() {
-	
-	} 
-	
-	/**
-	* Involves the setting the upper bound and/or 
-	* possibly the user setting the upper bound.
-	* FUNCTIONALITY NOT OFFICIALLY DETERMINED YET.
-	*/
-	//void setUpperBoundInput() {
-	
-		//return upperRange; //1024 or 1023?
-	//}
-
-
-	/**
-	* Involves receiving a choice.
-	* FUNCTIONALITY NOT OFFICIALLY DETERMINED YET.
-	*/
-	//void receiveChoice() {
-	
-	//}
-	
-	/**
 	* 
 	*/
 	public void computeLowerGuess() {
-	    currentGuess = previousGuess - (2^totallguesses/2^guess) - (currentnthguess)
+	    currentGuess = Math.ceil(previousGuess - (inputUpperBound/nthGuess));
 	}
 	
 	public void computeHigherGuess() {
-	    currentGuess = previousGuess + (2^totallguesses/2^guess) - (currentnthguess)
-	}
+	    currentGuess = Math.ceil(previousGuess + (inputUpperBound/nthGuess));
 	
 	/**
 	* Returns the maximum number of guesses the System is 
@@ -116,14 +82,14 @@ public class Core {
 	*@return returns the value of "maxNumGuesses" of type "int".
 	*/
 	public int getMaxNumGuesses() {
-		return maxNumGuesses; // 10 for non extra credit, log base 2 result of upper bound for extra credit
+		return maxNumGuesses;
 	}
 
 	/**
 	* Iterates the guess counter when the System guesses a number.
 	*/
 	private void iterateCurrentGuess() {
-		//++guessNumber NOT DEFINED yet
+		++nthGuess;
 	}
 
 }
