@@ -35,8 +35,8 @@ public class CoreTest extends testCase{
 				  the upper bound given to the program
 	*/
 	private int testGuesses = 10;
-	private int userNumber = 2;
-	private String userInput = "<";
+	private int testUserNumber = 2;
+	private String testUserInput = "<";
 	private in testUpperBound0=1024;
 	private int testUpperBound1=512;
 	private int testUpperBound2=256;
@@ -62,7 +62,7 @@ public class CoreTest extends testCase{
 		/**
 		*TODO: define more tests like this
 		*/
-		assertTrue(userInput, inputReceived);	//verifies that the option entered by
+		assertTrue(testUserInput, inputReceived);	//verifies that the option entered by
 								// the user to Display() is the same as the 
 								// Main() receives and uses
 								// this is repeated 9 times 
@@ -71,13 +71,13 @@ public class CoreTest extends testCase{
 								// calculates is equal to the known bound 
 								// testUpperBound0-8
 		
-		assertNotSame(userNumber, numberGuessed);    // prove that the entered 
+		assertNotSame(testUserNumber, numberGuessed);    // prove that the entered 
 								// number and the final 
 								// or approved guess) are 
 								// equal, but the references
 								// are not the same
 								
-		assertTrue(userNumber, finalNumberGuessed);	//compares the programs final guess	
+		assertTrue(testUserNumber, finalNumberGuessed);	//compares the programs final guess	
 								// with the user's number entered
 								
 		assertTrue(testGuesses >=  currentGuess);    // prove that it was guessed
