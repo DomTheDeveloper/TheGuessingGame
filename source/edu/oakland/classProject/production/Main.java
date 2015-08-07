@@ -42,7 +42,7 @@ public class Main{
 	}
 	
 	public void endGame(){
-		//display.endGameConfirmation(guess, guessIteration);
+		//display.getEndGameConfirmation(guess, guessIteration);
 		startGame();
 	}
 	
