@@ -43,7 +43,7 @@ public class Display {
 		System.out.println();
 	}
 	private void displayRange(int upperBoundComputed){
-		String lineToPrint = String.format("Please think of a number between 1 and %s.", upperBoundComputed);
+		String lineToPrint = String.format("Please think of a number between 1 and %d.", upperBoundComputed);
 		System.out.println(lineToPrint);
 		System.out.println();
 	}
@@ -140,5 +140,4 @@ public class Display {
 		
 		return true;
 	}
-	
 }
