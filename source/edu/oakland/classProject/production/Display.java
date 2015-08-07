@@ -1,4 +1,4 @@
-package edu.oakland.classproject.production;
+package edu.oakland.classProject.production;
 
 import java.util.*;
 import java.io.*;
@@ -15,46 +15,130 @@ public class Display {
 	/**
 	*TODO: make sure to define each method's functionality
 	*/
-	public char displayWelcomeMessage() {
-		Scanner input = new Scanner(System.in);
+	private String[] playOptions = new String[]{
+		"[S]: Simple Play",
+		"[A]: Advanced play",
+		"[Q]: Quit"
+	};
+	private char[] playSelections = optionsToSelections(playOptions);
+	
+	public char getPlaySelection(){
+		displayWelcomeMessage();
+		displayOptions(playOptions);
+		return requestEnterSelection(playSelections);
+	}
+	public int getUpperBoundInput(){
+		displayRequestUpperBoundInput();
+		return requestPositiveInteger();
+	}
+	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
+		displayRange(upperBoundComputed);
+		displayReminder();
+		displayMaxNumOfGuesses(maxNumOfGuesses, false);
+		displayRequestReturnKey();
+		requestReturnKey();
+	}
+	private void displayWelcomeMessage() {
 		System.out.println("Welcome to The Guessing Game!");
-		System.out.println("-----------------------------");
-		System.out.println("Select an option:");
-		System.out.println("[S]: Simple play");
-		System.out.println("[A]: Advanced play");
-		System.out.println("[Q]: Quit");
 		System.out.println();
-		System.out.print(">");
-		char playOrQuit = input.nextChar();
-		return playOrQuit.toUpperCase();
 	}
-	
-	public int displayRequestUpperBound(){
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter a value for a custom upper bound or press [ENTER]");
-		System.out.println("to accept the default value of 1024.");
-		System.out.println("The value must be a positive whole number greater than 1.");
-		int userUpperBound = input.nextInt();
-		return userUpperBound;
-	}
-	
-	public char displayBeginScreen (int calculatedUpperRange, int maxNumGuesses) {
-		Scanner input = new Scanner(System.in);
-		System.out.println("Please think of a number between 1 and " + calculatedUpperRange.toString() + ".");
+	private void displayRange(int upperBoundComputed){
+		String lineToPrint = String.format("Please think of a number between 1 and %s.", upperBoundComputed);
+		System.out.println(lineToPrint);
 		System.out.println();
-		System.out.println("Make sure you remember what your number is");
+	}
+	private void displayReminder(){
+		System.out.println("Make sure you remember your number,");
 		System.out.println("and do not change it during the game.");
 		System.out.println();
-		System.out.println("The game will guess what your number is within " + maxNumGuesses.toString() + "guesses or less.");
-		System.out.println();
-		System.out.println("Press any key when you are ready to begin the game!");
-		char beginGame = input.nextChar();
-		return beginGame;
 	}
-	
-	public char displayGameScreen () {
+	private void displayMaxNumOfGuesses(int maxNumOfGuesses, boolean gameEnded){
+		String verbTense = new String();
+		
+		if (gameEnded)
+			verbTense = "successfully guessed";
+		else
+			verbTense = "will guess";
+		
+		String lineToPrint = String.format("The game %s your number within %d guesses or less.", verbTense, maxNumOfGuesses);
+		System.out.println(lineToPrint);
+		System.out.println();
+	}
+	private void displayRequestUpperBoundInput(){
+		System.out.println("Enter the upper bound integer (example: 1024)");
+	}
+	private int requestPositiveInteger(){
+		System.out.print(">");
 		Scanner input = new Scanner(System.in);
-		System.out.println("");
+		String userInput = input.next();
+		while (!isInteger(userInput)){
+			System.out.println("Invalid input! Please enter a valid integer.");
+			return requestPositiveInteger();
+		}
+		int intInput = Integer.parseInt(userInput);
+		while(intInput < 1){
+			System.out.println("Invalid input! Please enter a positive integer.");
+			return requestPositiveInteger();
+		}
+		return intInput;
+	}
+	private char requestEnterSelection(char[] selections){
+		System.out.print(">");
+		Scanner input = new Scanner(System.in);
+		String userInput = input.next();
+		while (userInput.length() != 1){
+			System.out.println("Invalid selection! Please enter a 1 character selection.");
+			return requestEnterSelection(selections);
+		}
+		char selectionChar = userInput.toUpperCase().charAt(0);
+		while(!contains(selectionChar, selections)){
+			System.out.println("Invalid selection! Please enter a valid selection.");
+			return requestEnterSelection(selections);
+		}
+		return selectionChar;
+	}
+	private void displayRequestReturnKey(){
+		System.out.println("Press the return key to continue.");
+	}
+	private void requestReturnKey(){
+		System.out.print(">");
+		Scanner input = new Scanner(System.in);
+		input.nextLine();
+		return;
+	}
+	private void displayOptions(String[] options){
+		System.out.println("Select an option:");
+		for (String option : options) {
+			System.out.println(option);
+		}
+	}
+	private char[] optionsToSelections(String[] options){
+		int selection = 0;
+		char[] selections = new char[options.length];
+		for (String option : options) {
+			selections[selection] = option.charAt(1);
+			selection++;
+		}
+		return selections;
+	}
+	private boolean contains(char c, char[] array) {
+		for (char x : array) {
+			if (x == c) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private static boolean isInteger(String s) {
+		try { 
+			Integer.parseInt(s); 
+		} catch(NumberFormatException e) { 
+			return false; 
+		} catch(NullPointerException e) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 }
