@@ -20,10 +20,9 @@ public class Core {
 	/**
 	*TODO: class variable definitions here
 	*/  
-	private static int inputUpperBound = 1024;	// The maximum number the user can pick //made final in mian
-	private static int calcUpperBound;		// Adjusts the upper Bound so the user can pick
-						// a number from 1-1023.
-	private static int maxNumOfGuesses; 		// The number of guesses the System is
+	private static int upperBoundIncremented;
+	private static int upperBound;
+	private static int maxNumOfGuesses = 10; 		// The number of guesses the System is
 						// allotted. If the System does not guess
 						// the number correctly in the guesses
 						// allotted to it, the System loses and
@@ -34,8 +33,16 @@ public class Core {
 	private static int nthGuess = 1;
 	
 	public Core(){
-		computeMaxNumOfGuesses();
-		computeCalcUpperBound();
+		computeUpperBound();
+	}
+	
+	public void setUpperBoundSelection(int upperBoundSelection){
+		setMaxNumOfGuesses(upperBoundSelection);
+		computeUpperBound();
+	}
+	
+	private void computeUpperBoundIncremented(){
+		upperBoundIncremented = upperBound + 1;
 	}
 	
 	/**
@@ -43,8 +50,8 @@ public class Core {
 	* user can pick.
 	*@return returns the value of "inputUpperBound" of type "int".
 	*/
-	 public int getInputUpperBound() {
-		return inputUpperBound;
+	public int getUpperBound(){
+		return upperBound;
 	}
 	
 	/**
@@ -52,26 +59,21 @@ public class Core {
 	* user can pick.
 	*@return returns the value of "inputUpperBound" of type "int".
 	*/
-	public void computeCalcUpperBound() {
-		calcUpperBound = inputUpperBound - 1;	
+	public void computeUpperBound() {
+		upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
+		computeUpperBoundIncremented();
 	}
 	
-	public int getCalcUpperBound(){
-		return calcUpperBound;
-	}
-	
-	/**
-	* For extra credit for when the user can set the upper Bound.
-	*/
-	public void setInputUpperBound(int _inputUpperBound) {
-		inputUpperBound = _inputUpperBound;
-		computeMaxNumOfGuesses();
-		computeCalcUpperBound();
-	}
-	
+	/*
 	public void computeMaxNumOfGuesses() {
-	    maxNumOfGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
+	    maxNumOfGuesses = (int)(Math.log(upperBoundIncremented)/Math.log(2));
 	}
+	*/
+	
+	public void setMaxNumOfGuesses(int _maxNumOfGuesses){
+		maxNumOfGuesses = _maxNumOfGuesses;
+	}
+	
 	/**
 	* Returns the maximum number of guesses the System is 
 	* allowed to make. When the maxNumOfGuesses value is reached,
@@ -83,11 +85,11 @@ public class Core {
 	}
 	
 	public void computeLowerGuess() {
-	    currentGuess = (int)Math.ceil(previousGuess - (inputUpperBound/nthGuess));
+	    currentGuess = (int)Math.ceil(previousGuess - (upperBoundIncremented/nthGuess));
 	}
 	
 	public void computeHigherGuess() {
-	    currentGuess = (int)Math.ceil(previousGuess + (inputUpperBound/nthGuess));
+	    currentGuess = (int)Math.ceil(previousGuess + (upperBoundIncremented/nthGuess));
 	}
 	
 

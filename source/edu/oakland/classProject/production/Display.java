@@ -9,14 +9,13 @@ import java.io.*;
 *@version "version 0.0.2" "150803"
 */
 public class Display {
-	/**
-	*TODO: class variable definitions here
-	*/
-	/**
+	int MIN_UPPERBOUND_OPTION = 1;
+	int MAX_UPPERBOUND_OPTION = 16;
+	/*
 	*TODO: make sure to define each method's functionality
 	*/
 	private String[] playOptions = new String[]{
-		"[S]: Simple Play",
+		"[S]: Simple play",
 		"[A]: Advanced play",
 		"[Q]: Quit"
 	};
@@ -27,9 +26,9 @@ public class Display {
 		displayOptions(playOptions);
 		return requestEnterSelection(playSelections);
 	}
-	public int getUpperBoundInput(){
-		displayRequestUpperBoundInput();
-		return requestPositiveInteger();
+	public int getUpperBoundSelection(){
+		displayRequestUpperBoundSelection();
+		return requestEnterUpperBoundSelection();
 	}
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
 		displayRange(upperBoundComputed);
@@ -64,21 +63,27 @@ public class Display {
 		System.out.println(lineToPrint);
 		System.out.println();
 	}
-	private void displayRequestUpperBoundInput(){
-		System.out.println("Enter the upper bound integer (example: 1024)");
+	private void displayRequestUpperBoundSelection(){
+		System.out.println("Please enter an option for your desired upper bound.");
+		for (int selection = MIN_UPPERBOUND_OPTION; selection <= MAX_UPPERBOUND_OPTION; selection++){
+			int maxNumOfGuesses = selection;
+			int upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
+			String option = String.format("[%d]: %d", selection, upperBound);
+			System.out.println(option);
+		}
 	}
-	private int requestPositiveInteger(){
+	private int requestEnterUpperBoundSelection(){
 		System.out.print(">");
 		Scanner input = new Scanner(System.in);
 		String userInput = input.next();
 		while (!isInteger(userInput)){
 			System.out.println("Invalid input! Please enter a valid integer.");
-			return requestPositiveInteger();
+			return requestEnterUpperBoundSelection();
 		}
 		int intInput = Integer.parseInt(userInput);
-		while(intInput < 1){
-			System.out.println("Invalid input! Please enter a positive integer.");
-			return requestPositiveInteger();
+		while(intInput < MIN_UPPERBOUND_OPTION || intInput > MAX_UPPERBOUND_OPTION){
+			System.out.println(String.format("Invalid input! Please enter a valid selection."));
+			return requestEnterUpperBoundSelection();
 		}
 		return intInput;
 	}

@@ -26,11 +26,12 @@ public class Main{
 				/// keep default upperBoundInput
 				break;
 			case 'A': /// Advanced Play
-				int upperBoundInput = display.getUpperBoundInput();
-				core.setInputUpperBound(upperBoundInput);
+				int upperBoundSelection = display.getUpperBoundSelection();
+				core.setUpperBoundSelection(upperBoundSelection);
 				break;
 		}
-		int upperBoundComputed = core.getCalcUpperBound();
+		
+		int upperBoundComputed = core.getUpperBound();
 		int maxNumOfGuesses = core.getMaxNumOfGuesses();
 			
 		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
