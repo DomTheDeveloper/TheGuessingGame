@@ -23,12 +23,12 @@ public class Main{
 				break;
 			case 'A': /// Advanced Play
 				int upperBoundSelection = display.getUpperBoundSelection();
-				core.setUpperBoundSelection(upperBoundSelection);
+				core.setUpperBoundInput(upperBoundSelection);
 				break;
 		}
 		
-		int upperBoundComputed = core.getUpperBound();
-		int maxNumOfGuesses = core.getMaxNumOfGuesses();
+		int upperBoundComputed = core.requestUpperBoundComputed();
+		int maxNumOfGuesses = core.requestMaxNumGuesses();
 			
 		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
 			

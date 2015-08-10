@@ -72,7 +72,7 @@ public class Core {
 		}
 		else if(feedbackSelection.equalsIgnoreCase("higher")) {
 			numberGuessed = (int) Math.ceil(previousGuess + 
-							(Math.pow(2, currentGuess)));
+							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
 		previousGuess = numberGuessed;
 	}
@@ -119,7 +119,7 @@ public class Core {
 	* For extra credit for when the user can set the upper bound.
 	*/
 	public void setUpperBoundInput(int chosenUpperBound) {
-		inputUpperBound = chosenUpperBound;
+		inputUpperBound = (int)Math.pow(2, chosenUpperBound);
 	}
 	
 	/**
