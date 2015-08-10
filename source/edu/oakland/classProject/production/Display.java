@@ -57,7 +57,7 @@ public class Display {
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
 		displayRange(upperBoundComputed);
 		displayReminder();
-		displayMaxNumOfGuesses(maxNumOfGuesses, false);
+		displayNumOfGuesses(maxNumOfGuesses, false);
 		displayRequestReturnKey();
 		requestReturnKey();
 	}
@@ -71,7 +71,8 @@ public class Display {
 
 	public void getEndGameConfirmation(int guess, int guessIteration){
 		System.out.println(String.format("The system has guessed your number, which is %d.", guess));
-		System.out.println(String.format("The device found the correct number in %d guesses.", guessIteration));
+		displayNumOfGuesses(guessIteration, true);
+		displayRequestReturnKey();
 		requestReturnKey();
 	}
 
@@ -107,18 +108,52 @@ public class Display {
 		System.out.println("and do not change it during the game.");
 		System.out.println();
 	}
-	private void displayMaxNumOfGuesses(int maxNumOfGuesses, boolean gameEnded){
+	private void displayNumOfGuesses(int numOfGuesses, boolean gameEnded){
 		String verbTense = new String();
+		String plurality = new String();
 		
 		if (gameEnded)
 			verbTense = "successfully guessed";
 		else
 			verbTense = "will guess";
+			
+		if (numOfGuesses > 1){
+			plurality = "es";
+			if (!gameEnded)
+				plurality += " or fewer";
+		}
+		else
+			plurality = "";
 		
-		String lineToPrint = String.format("The game %s your number within %d guesses or less.", verbTense, maxNumOfGuesses);
+		String lineToPrint = String.format("The game %s your number in %d guess%s.", verbTense, numOfGuesses, plurality);
 		System.out.println(lineToPrint);
 		System.out.println();
-	}	
+	}
+	
+	private Object generateUpperBoundOptions(int dimensions){
+		int numOfSelections = MAX_UPPERBOUND_OPTION-MIN_UPPERBOUND_OPTION;
+		
+		int[]   upperBoundOptions_1D = new int[numOfSelections+1];
+		int[][] upperBoundOptions_2D = new int[numOfSelections+1][2];
+		
+		for (int i = 0; i <= numOfSelections; i++){
+			int maxNumOfGuesses = i + MIN_UPPERBOUND_OPTION;
+			int upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
+			
+			//1D
+			upperBoundOptions_1D[i] = upperBound;
+			
+			//2D
+			upperBoundOptions_2D[i][0] = maxNumOfGuesses;
+			upperBoundOptions_2D[i][1] = upperBound;
+			
+		}
+		if (dimensions == 1)
+			return upperBoundOptions_1D;
+		else /// if (dimensions == 2)
+			return upperBoundOptions_2D;
+	}
+	
 	/**
  	* Prints for user to enter an option for upper bound
  	* 
@@ -126,11 +161,12 @@ public class Display {
  	*/
 	private void displayRequestUpperBoundSelection(){
 		System.out.println("Please enter an option for your desired upper bound.");
-		for (int selection = MIN_UPPERBOUND_OPTION; selection <= MAX_UPPERBOUND_OPTION; selection++){
-			int maxNumOfGuesses = selection;
-			int upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
-			String option = String.format("[%d]: %d", selection, upperBound);
-			System.out.println(option);
+		int[][] upperBoundOptions = (int[][])generateUpperBoundOptions(2);
+		for (int[] option : upperBoundOptions){
+			int maxNumOfGuesses = option[0];
+			int upperBound      = option[1];
+
+			System.out.println(String.format("[%d]: %d", maxNumOfGuesses, upperBound));
 		}
 	}
 	/**

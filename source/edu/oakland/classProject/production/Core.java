@@ -115,12 +115,12 @@ public class Core {
 	}
 		
 	private void computeHasGameEnded() {
-		if ((currentGuess+1) >= maxNumGuesses) {
-			computeGuessIteration();
-			computeGuess();
+		if (feedbackSelection.equalsIgnoreCase("equal")) {
 			hasGameEnded = true;
 		}
-		else if (feedbackSelection.equalsIgnoreCase("equal")) {
+		else if ((currentGuess+1) >= maxNumGuesses) {
+			computeGuessIteration();
+			computeGuess();
 			hasGameEnded = true;
 		}
 		else {
