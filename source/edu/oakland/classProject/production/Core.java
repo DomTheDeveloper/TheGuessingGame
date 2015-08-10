@@ -68,11 +68,11 @@ public class Core {
 		
 		if(feedbackSelection.equalsIgnoreCase("lower")) {
 			numberGuessed = (int) Math.ceil(previousGuess - 
-							(inputUpperBound/currentGuess));
+							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
 		else if(feedbackSelection.equalsIgnoreCase("higher")) {
 			numberGuessed = (int) Math.ceil(previousGuess + 
-							(inputUpperBound/currentGuess));
+							(Math.pow(2, currentGuess)));
 		}
 		previousGuess = numberGuessed;
 	}
