@@ -102,7 +102,7 @@ public class Core {
 	}
 		
 	private void computeHasGameEnded() {
-		if(currentGuess >= 10)
+		if(currentGuess >= maxNumGuesses)
 			hasGameEnded = true;
 		else if(feedbackSelection.equalsIgnoreCase("equal"))
 			hasGameEnded = true;
