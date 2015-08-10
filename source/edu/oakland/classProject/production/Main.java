@@ -39,7 +39,8 @@ public class Main{
 		
 		int currentGuessIteration = core.getGuessIteration();
 		int currentGuess = core.getGuess();
-
+		
+		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
 		
 	}
 

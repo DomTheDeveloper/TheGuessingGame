@@ -25,8 +25,13 @@ public class Display {
 		"[A]: Advanced play",
 		"[Q]: Quit"
 	};
+	private String[] guessOptions = new String[]{
+		"[+]: My number is higher",
+		"[-]: My number is lower",
+		"[=]: My number is equal"
+	};
 	private char[] playSelections = optionsToSelections(playOptions);
-	
+	private char[] guessSelections = optionsToSelections(guessOptions);
 	 /**
 	*This method displays the main screen to the user.
 	* User must select an option.
@@ -56,6 +61,19 @@ public class Display {
 		displayRequestReturnKey();
 		requestReturnKey();
 	}
+
+	public char getGuessFeedback(int currentGuess, int currentGuessIteration){	
+		String lineToPrint = String.format("Guess #%d\nThe system has guessed %d.", currentGuessIteration, currentGuess);
+		System.out.println(lineToPrint);
+		char userFeedback = requestEnterGuessFeedback();
+		return userFeedback;
+	}
+
+	private char requestEnterGuessFeedback(){
+		displayOptions(guessOptions);
+		return requestEnterSelection(guessSelections);
+	}
+			
 	/**
 	* Displays Welcome Message.
 	* Welcome title diplayed at the beginning of the game.
