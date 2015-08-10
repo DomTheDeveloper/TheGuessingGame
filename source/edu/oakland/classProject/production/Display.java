@@ -40,7 +40,7 @@ public class Display {
 		displayOptions(playOptions);
 		return requestEnterSelection(playSelections);
 	}
-	 /**
+	/**
    	* Displays the UpperBound selection.
    	* @return the display of the requested UpperBound that was entered.
    	*/
@@ -48,6 +48,7 @@ public class Display {
 		displayRequestUpperBoundSelection();
 		return requestEnterUpperBoundSelection();
 	}
+	
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
 		displayRange(upperBoundComputed);
 		displayReminder();
@@ -93,7 +94,12 @@ public class Display {
 		String lineToPrint = String.format("The game %s your number within %d guesses or less.", verbTense, maxNumOfGuesses);
 		System.out.println(lineToPrint);
 		System.out.println();
-	}
+	}	
+	/**
+ 	* Prints for user to enter an option for upper bound
+ 	* 
+ 	* 
+ 	*/
 	private void displayRequestUpperBoundSelection(){
 		System.out.println("Please enter an option for your desired upper bound.");
 		for (int selection = MIN_UPPERBOUND_OPTION; selection <= MAX_UPPERBOUND_OPTION; selection++){
@@ -103,6 +109,16 @@ public class Display {
 			System.out.println(option);
 		}
 	}
+	/**
+ 	* This method checks to see if the integer is a valid entry
+ 	* If the selection is incorrect, the System will throw an error message 
+ 	* saying Invalid Input. 
+ 	* Creates a Scanner class to be able to print multiple lines.
+ 	* @param userInput 	the userInput is the input stored by the user
+ 	* @return the request for upper bound selected
+ 	* 
+ 	*/
+	
 	private int requestEnterUpperBoundSelection(){
 		System.out.print(">");
 		Scanner input = new Scanner(System.in);
@@ -118,6 +134,7 @@ public class Display {
 		}
 		return intInput;
 	}
+	
 	private char requestEnterSelection(char[] selections){
 		System.out.print(">");
 		Scanner input = new Scanner(System.in);
@@ -140,12 +157,18 @@ public class Display {
 	private void displayRequestReturnKey(){
 		System.out.println("Press the return key to continue.");
 	}
+	/**
+	* The method checks for the user pressing the enter key. 
+	* @param input 	looks for the user to press the enter key.
+	* @return 	the enter key
+ 	*/
 	private void requestReturnKey(){
 		System.out.print(">");
 		Scanner input = new Scanner(System.in);
 		input.nextLine();
 		return;
 	}
+	
 	private void displayOptions(String[] options){
 		System.out.println("Select an option:");
 		for (String option : options) {
@@ -179,7 +202,7 @@ public class Display {
  	* the screen, the data will throw an exception.
  	*
  	* @param  name the location of the image, relative to the url argument
- 	* @return   null
+ 	* @return   true
  	*/
 	
 	private static boolean isInteger(String s) {
