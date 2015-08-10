@@ -48,7 +48,8 @@ public class Display {
 		displayRequestUpperBoundSelection();
 		return requestEnterUpperBoundSelection();
 	}
-	
+	/** ready to go
+	*/
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
 		displayRange(upperBoundComputed);
 		displayReminder();
