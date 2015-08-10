@@ -3,34 +3,34 @@ package edu.oakland.classProject.production;
 import edu.oakland.classProject.production.Display;
 import edu.oakland.classProject.production.Core;
 
-/**
-*	This class passes information between the Core and the Display class.
-*	@author Gregory Kabacinski
-*	@version "version 0.2" "150810"
-**/
-
 public class Main{
-	
-	// Create instances of the Display and Core classes.
-	private static Display display = new Display();
-	private static Core core = new Core();
-	
-	// The main method calls for the methods to start the game and then method for
-	// the system to guess and the player to interact with the system.
-	public static void main(String[] args){
-		startGame();
-		makeGuess("higher");
-	}
 
-	/** 
-	*	The startGame method calls for the Display class to display the initial screen.
-	*	This will also read the initial user input for simple/advanced game selection.
-	**/
-	public static void startGame(){
+	private static Display display = new Display();
+	private static Core core;
+	
+	public static void main(String[] args){
+		boolean gameEnded;
+		while (true){
+			core = new Core();
+			gameEnded = false;
+			if (startGame()) {
+				core.setGuessFeedbackSelection("higher");
+				while (gameEnded == false) {
+					makeGuess();
+					gameEnded = core.requestHasGameEnded();
+				}
+				endGame();
+			} else {
+				return;
+			}
+		}
+	}
+	
+	public static boolean startGame(){
 		char playSelection = display.getPlaySelection();
 		switch (playSelection){
 			case 'Q': /// Quit
-				return;
+				return false;
 			case 'S': /// Simple Play
 				/// keep default upperBoundInput
 				break;
@@ -44,20 +44,31 @@ public class Main{
 		int maxNumOfGuesses = core.requestMaxNumGuesses();
 			
 		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
-			
+
+		return true;
 	}
 	
-	public static void makeGuess(String userSelection){
-		core.setGuessFeedbackSelection(userSelection);
-		
+	public static void makeGuess(){
 		int currentGuessIteration = core.getGuessIteration();
 		int currentGuess = core.getGuess();
 		
 		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
 		
+		switch (guessFeedback){
+			case '+': //"My number is higher"
+				core.setGuessFeedbackSelection("higher");
+				break;
+			case '-': //"My number is lower"
+				core.setGuessFeedbackSelection("lower");
+				break;
+			case '=': //"My number is equal"
+				core.setGuessFeedbackSelection("equal");
+				break;
+		}
 	}
 
 	public static void endGame(){
+		System.out.println("-- Game ended --");
 		//display.getEndGameConfirmation(guess, guessIteration);
 	}
 	
