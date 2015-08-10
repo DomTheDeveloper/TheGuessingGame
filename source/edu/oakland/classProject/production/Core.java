@@ -43,6 +43,14 @@ public class Core {
 											// System's guess. The user may specify that the number
 											// guessed is higher, lower, or equal to the number he/she 
 											// picked.
+	public void reinitialize(){
+		hasGameEnded = false;
+		inputUpperBound = 1024;
+		numberGuessed = 0;
+		previousGuess = 0;
+		currentGuess = 0;
+		feedbackSelection = "";
+	}
 	
 	private void computeMaxNumGuesses() {
 	    maxNumGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
@@ -62,7 +70,7 @@ public class Core {
 	/**
 	* 
 	*/
-	private void computeGuess() {
+	public int computeGuess() {
 		
 		if(feedbackSelection.equalsIgnoreCase("lower")) {
 			numberGuessed = (int) Math.ceil(previousGuess - 
@@ -73,6 +81,7 @@ public class Core {
 							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
 		previousGuess = numberGuessed;
+		return numberGuessed;
 	}
 	
 	/**
@@ -81,15 +90,15 @@ public class Core {
 	*@return returns the value of "numberGuessed" of type "int".
 	*/
 	public int getGuess() {
-		computeGuess();
 		return numberGuessed;
 	}
 
 	/**
 	* Iterates the guess counter when the System guesses a number.
 	*/
-	private void computeGuessIteration() {
+	public int computeGuessIteration() {
 		++currentGuess;
+		return currentGuess;
 	}
 	
 	/**
@@ -98,7 +107,6 @@ public class Core {
 	*@return returns the value of "currentGuess" of type "int".
 	*/
 	public int getGuessIteration() {
-		computeGuessIteration();
 		return currentGuess;
 	}
 	
@@ -107,12 +115,17 @@ public class Core {
 	}
 		
 	private void computeHasGameEnded() {
-		if(currentGuess >= maxNumGuesses)
+		if ((currentGuess+1) >= maxNumGuesses) {
+			computeGuessIteration();
+			computeGuess();
 			hasGameEnded = true;
-		else if(feedbackSelection.equalsIgnoreCase("equal"))
+		}
+		else if (feedbackSelection.equalsIgnoreCase("equal")) {
 			hasGameEnded = true;
-		else
+		}
+		else {
 			hasGameEnded = false;
+		}
 	}
 	
 	public boolean requestHasGameEnded() {

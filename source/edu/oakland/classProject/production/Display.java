@@ -69,6 +69,12 @@ public class Display {
 		return userFeedback;
 	}
 
+	public void getEndGameConfirmation(int guess, int guessIteration){
+		System.out.println(String.format("The system has guessed your number, which is %d.", guess));
+		System.out.println(String.format("The device found the correct number in %d guesses.", guessIteration));
+		requestReturnKey();
+	}
+
 	private char requestEnterGuessFeedback(){
 		displayOptions(guessOptions);
 		return requestEnterSelection(guessSelections);

@@ -6,15 +6,16 @@ import edu.oakland.classProject.production.Core;
 public class Main{
 
 	private static Display display = new Display();
-	private static Core core;
+	private static Core core = new Core();
 	
 	public static void main(String[] args){
 		boolean gameEnded;
 		while (true){
-			core = new Core();
+			core.reinitialize();
 			gameEnded = false;
 			if (startGame()) {
 				core.setGuessFeedbackSelection("higher");
+				gameEnded = core.requestHasGameEnded();
 				while (gameEnded == false) {
 					makeGuess();
 					gameEnded = core.requestHasGameEnded();
@@ -48,9 +49,9 @@ public class Main{
 		return true;
 	}
 	
-	public static void makeGuess(){
-		int currentGuessIteration = core.getGuessIteration();
-		int currentGuess = core.getGuess();
+	public static int makeGuess(){
+		int currentGuessIteration = core.computeGuessIteration();
+		int currentGuess = core.computeGuess();
 		
 		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
 		
@@ -65,11 +66,11 @@ public class Main{
 				core.setGuessFeedbackSelection("equal");
 				break;
 		}
+		return currentGuess;
 	}
 
 	public static void endGame(){
-		System.out.println("-- Game ended --");
-		//display.getEndGameConfirmation(guess, guessIteration);
+		display.getEndGameConfirmation(core.getGuess(), core.getGuessIteration());
 	}
 	
 }
