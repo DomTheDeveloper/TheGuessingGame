@@ -68,11 +68,11 @@ public class Core {
 		
 		if(feedbackSelection.equalsIgnoreCase("lower")) {
 			numberGuessed = (int) Math.ceil(previousGuess - 
-							(inputUpperBound/currentGuess));
+							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
 		else if(feedbackSelection.equalsIgnoreCase("higher")) {
 			numberGuessed = (int) Math.ceil(previousGuess + 
-							(inputUpperBound/currentGuess));
+							(Math.pow(2, currentGuess)));
 		}
 		previousGuess = numberGuessed;
 	}
@@ -102,7 +102,7 @@ public class Core {
 	}
 		
 	private void computeHasGameEnded() {
-		if(currentGuess >= 10)
+		if(currentGuess >= maxNumGuesses)
 			hasGameEnded = true;
 		else if(feedbackSelection.equalsIgnoreCase("equal"))
 			hasGameEnded = true;
