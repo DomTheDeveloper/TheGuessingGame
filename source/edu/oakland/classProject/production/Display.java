@@ -9,6 +9,12 @@ import java.io.*;
 *@version "version 0.0.2" "150803"
 */
 public class Display {
+	 /**
+   	* The local variables that determines the min and max that a user
+   	* can select from.
+   	* @param int MIN_UPPERBOUND_OPTION is the lowwest number possible.
+   	* @param int MAX_UPPERBOUND_OPTION is the hightest number possible.
+   	*/
 	int MIN_UPPERBOUND_OPTION = 1;
 	int MAX_UPPERBOUND_OPTION = 16;
 	/*
@@ -21,11 +27,23 @@ public class Display {
 	};
 	private char[] playSelections = optionsToSelections(playOptions);
 	
+	 /**
+	*This method displays the main screen to the user.
+	* User must select an option.
+   	* @param diplayWelcomeMessage
+   	* @param diplayOptions
+   	* @return char This returns the selection entered by user
+   	* which should be redirected to the Play Selection.
+   	*/
 	public char getPlaySelection(){
 		displayWelcomeMessage();
 		displayOptions(playOptions);
 		return requestEnterSelection(playSelections);
 	}
+	 /**
+   	* Displays the UpperBound selection.
+   	* @return the display of the requested UpperBound that was entered.
+   	*/
 	public int getUpperBoundSelection(){
 		displayRequestUpperBoundSelection();
 		return requestEnterUpperBoundSelection();
@@ -37,15 +55,28 @@ public class Display {
 		displayRequestReturnKey();
 		requestReturnKey();
 	}
+	/**
+	* Displays Welcome Message.
+	* Welcome title diplayed at the beginning of the game.
+	*/
 	private void displayWelcomeMessage() {
 		System.out.println("Welcome to The Guessing Game!");
 		System.out.println();
 	}
+	/**
+	* Instructions user to choose a number between 1 and UpperBound.
+	* Will diplay for user to chose a number.
+	* @see upperBoundComputed
+	*/
 	private void displayRange(int upperBoundComputed){
 		String lineToPrint = String.format("Please think of a number between 1 and %d.", upperBoundComputed);
 		System.out.println(lineToPrint);
 		System.out.println();
 	}
+	/**
+ 	* Diplays warning message to user.
+ 	* Warns user of the rules of the game.
+ 	*/
 	private void displayReminder(){
 		System.out.println("Make sure you remember your number,");
 		System.out.println("and do not change it during the game.");
@@ -102,6 +133,10 @@ public class Display {
 		}
 		return selectionChar;
 	}
+	/**
+ 	* Diplay for the user to press the return (enter)
+ 	* button to continue the game.
+ 	*/
 	private void displayRequestReturnKey(){
 		System.out.println("Press the return key to continue.");
 	}
@@ -134,6 +169,19 @@ public class Display {
 		}
 		return false;
 	}
+	
+	/**
+	* String utility class to determine if a given string is a number (Integer).
+	* Using method try, catch to only accept numbers.
+ 	* <p>
+ 	* This method always returns immediately, whether or not the 
+ 	* number exists. When this user attempts to place a letter on 
+ 	* the screen, the data will throw an exception.
+ 	*
+ 	* @param  name the location of the image, relative to the url argument
+ 	* @return   null
+ 	*/
+	
 	private static boolean isInteger(String s) {
 		try { 
 			Integer.parseInt(s); 
