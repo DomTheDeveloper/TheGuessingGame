@@ -125,7 +125,7 @@ public class Display {
 		else
 			plurality = "";
 		
-		String lineToPrint = String.format("The game %s your number in %d guess%s.", verbTense, numOfGuesses, plurality);
+		String lineToPrint = String.format("The system %s your number in %d guess%s.", verbTense, numOfGuesses, plurality);
 		System.out.println(lineToPrint);
 		System.out.println();
 	}
