@@ -130,6 +130,7 @@ public class Display {
 		System.out.println();
 	}
 	
+	/* will return either int[] or int[][], based on dimensions input */
 	private Object generateUpperBoundOptions(int dimensions){
 		int numOfSelections = MAX_UPPERBOUND_OPTION-MIN_UPPERBOUND_OPTION;
 		
