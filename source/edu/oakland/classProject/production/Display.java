@@ -48,7 +48,7 @@ public class Display {
 		displayRequestUpperBoundSelection();
 		return requestEnterUpperBoundSelection();
 	}
-	/** ready to go
+	/** 
 	*/
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
 		displayRange(upperBoundComputed);
@@ -97,7 +97,7 @@ public class Display {
 		System.out.println();
 	}	
 	/**
- 	* Prints for user to enter an option for upper bound
+ 	* 
  	* 
  	* 
  	*/
