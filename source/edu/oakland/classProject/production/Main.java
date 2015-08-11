@@ -17,6 +17,12 @@ public class Main{
 	
 	// The main method calls for the methods to start the game and then method for
 	// the system to guess and the player to interact with the system.
+	/**
+	* The main method that calculates the start of the game
+	* @param startGame
+	* @param makeGuess
+	* @see upperBoundComputed
+	*/
 	public static void main(String[] args){
 		startGame();
 		makeGuess("higher");
@@ -25,6 +31,11 @@ public class Main{
 	/** 
 	*	The startGame method calls for the Display class to display the initial screen.
 	*	This will also read the initial user input for simple/advanced game selection.
+	* @param upperBoundComputed 	int calculated the Upper Bound called from the Core
+	* @param maxNumOfGuesses	int calculated the max number of guesses		
+	* @param playSelection 	Grabs the options from the display and calculates what each letter
+	* 			consists of. 
+	* @return 		"Q" will return to startGame
 	**/
 	public static void startGame(){
 		char playSelection = display.getPlaySelection();
@@ -46,7 +57,12 @@ public class Main{
 		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
 			
 	}
-	
+	/**
+	* Communicates with the Core to pull the user's number.
+	* @param userSelection
+	* @param currentGuessIteration
+	* @param currentGuess
+	*/
 	public static void makeGuess(String userSelection){
 		core.setGuessFeedbackSelection(userSelection);
 		
@@ -55,7 +71,11 @@ public class Main{
 
 		
 	}
-
+	/**
+	* End of the game
+	* Display the guessed number and confirms the end results.
+	* @see endGame
+	*/
 	public static void endGame(){
 		//display.getEndGameConfirmation(guess, guessIteration);
 	}

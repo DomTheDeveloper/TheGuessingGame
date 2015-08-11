@@ -52,7 +52,9 @@ public class Core {
 	* Returns the maximum number of guesses the System is 
 	* allowed to make. When the maxNumGuesses value is reached,
 	* the user wins the game and the System loses.
-	*@return returns the value of "maxNumGuesses" of type "int".
+	* @param computeMaxNumGuesses
+	* @return  the value of "maxNumGuesses" of type "int".
+	* @see requestMaxNumGuesses
 	*/
 	public int requestMaxNumGuesses() {
 		computeMaxNumGuesses();
@@ -78,7 +80,8 @@ public class Core {
 	/**
 	* Calls a method that makes the next guess and returns
 	* that guess.
-	*@return returns the value of "numberGuessed" of type "int".
+	* @param computeGuess
+	* @return numberGuessed	 the value of "numberGuessed" of type "int".
 	*/
 	public int getGuess() {
 		computeGuess();
@@ -95,13 +98,18 @@ public class Core {
 	/**
 	* Calls a method to iterate the guess counter and returns
 	* the value stored in the guess counter.
-	*@return returns the value of "currentGuess" of type "int".
+	* @param computeGuessIteration
+	* @return returns the value of "currentGuess" of type "int".
 	*/
 	public int getGuessIteration() {
 		computeGuessIteration();
 		return currentGuess;
 	}
-	
+	/**
+	* This method sets the feedbackSelection as a String reference
+	* which will calculate feedselection as selection
+	* @param selection 
+	*/
 	public void setGuessFeedbackSelection(String selection) {
 		feedbackSelection = selection;
 	}
@@ -114,7 +122,13 @@ public class Core {
 		else
 			hasGameEnded = false;
 	}
-	
+	/**
+	* This boolean method tests to see if the game actually ended. If so, it will return 
+	* and end the game.
+	* @param computeHasGameEnded	validates with Main to determine if the user
+	* 				selects to end the game.
+	* @return hasGameEnded
+	*/
 	public boolean requestHasGameEnded() {
 		computeHasGameEnded();
 		return hasGameEnded;
@@ -134,7 +148,11 @@ public class Core {
 	private void computeUpperBoundComputed() {
 		calcUpperBound = inputUpperBound - 1;	
 	}
-	
+	/**
+	* This method calls for the requested Upper Bound and returns the computed uppper bound.
+	* @param computUpperBoundComputed
+	* @return calcUpperBound int type
+	*/
 	public int requestUpperBoundComputed() {
 		computeUpperBoundComputed();
 		return calcUpperBound;
