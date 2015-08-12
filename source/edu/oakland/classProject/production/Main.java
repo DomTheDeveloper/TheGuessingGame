@@ -22,10 +22,6 @@ public class Main{
 	*/
 	public static void main(String[] args){
 		boolean gameEnded;
-		Display display = new Display();
-		Core core = new Core();
-		Main main = new Main();
-		
 		while (true){
 			core.reinitialize();
 			gameEnded = false;
