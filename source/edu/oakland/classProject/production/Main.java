@@ -8,6 +8,11 @@ public class Main{
 	private Display display;
 	private Core core;
 	
+	public int upperBoundComputed;
+	public int maxNumOfGuesses;
+	public int currentGuessIteration;
+	public int currentGuess;
+	
 	public Main(){
 		display = new Display();
 		core = new Core();
@@ -51,8 +56,8 @@ public class Main{
 				break;
 		}
 		
-		int upperBoundComputed = core.requestUpperBoundComputed();
-		int maxNumOfGuesses = core.requestMaxNumGuesses();
+		upperBoundComputed = core.requestUpperBoundComputed();
+		maxNumOfGuesses = core.requestMaxNumGuesses();
 			
 		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
 
@@ -60,8 +65,8 @@ public class Main{
 	}
 	
 	public int makeGuess(){
-		int currentGuessIteration = core.computeGuessIteration();
-		int currentGuess = core.computeGuess();
+		currentGuessIteration = core.computeGuessIteration();
+		currentGuess = core.computeGuess();
 		
 		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
 		
