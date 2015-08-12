@@ -43,7 +43,7 @@ public class CoreTest extends TestCase{
 	private int calcGuesses=0;
 	private int upperBound=0;
 	private int currentGuess=0;
-	private char testUserInput = '<';
+	private String testUserInput = "+";
 	private int testUserNumber = 2;
 	private static boolean testHasGameEnded = false;
 	
@@ -74,17 +74,19 @@ public class CoreTest extends TestCase{
 	
 	public void setUp(){
 		Display display = new Display();
-	//	display.getUserNumber(testUserNumber);
-	//	display.requestEnterSelection(testPlay);
 	}
 	
 	public void testComputeMaxNumGuesses(){
 		Core core = new Core();
-	//	Main main = new Main(display, core);
 		int maxNumGuesses = core.requestMaxNumGuesses();
 		assertEquals(testGuesses,maxNumGuesses);		
 	}
 	
+	public void testGetGuess(){
+		Core core = new Core ();
+		setGuessFeedbackSelection(testUserInput); // +
+		assertTrue(getGuess);
+	}
 	
 	/*
 	
