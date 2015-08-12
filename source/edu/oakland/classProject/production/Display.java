@@ -106,7 +106,7 @@ public class Display {
 	/**
 	* Instructions user to choose a number between 1 and UpperBound.
 	* Will diplay for user to chose a number.
-	* @see upperBoundComputed
+	* @param upperBoundComputed
 	*/
 	private void displayRange(int upperBoundComputed){
 		String lineToPrint = String.format("Please think of a number between 1 and %d.", upperBoundComputed);
