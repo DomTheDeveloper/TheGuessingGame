@@ -74,8 +74,6 @@ public class Main{
 		
 		char guessFeedback = ui ? _guessFeedback : display.getGuessFeedback(currentGuess, currentGuessIteration);
 		
-		core.setGuessFeedbackSelection(guessFeedback);
-		
 		switch (guessFeedback){
 			case '+': //"My number is higher"
 				core.setGuessFeedbackSelection("higher");
