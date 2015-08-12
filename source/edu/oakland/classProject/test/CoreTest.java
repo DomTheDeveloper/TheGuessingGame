@@ -82,15 +82,30 @@ public class CoreTest extends TestCase{
 		assertEquals(testGuesses,maxNumGuesses);		
 	}
 	
-	public void testGetGuess(){
+	public void testGuessIteration(){
 		Core core = new Core ();
-		setGuessFeedbackSelection(testUserInput); // +
-		assertTrue(getGuess);
+		core.computeGuessIteration();
+		core.computeGuessIteration();
+		core.computeGuessIteration();
+		int guessIteration = core.getGuessIteration();
+		assertEquals(3,guessIteration);
 	}
 	
-	/*
+	public void testHasGameEnded(){
+		Core core = new Core();
+		int maxNumGuesses =10;
+		int currentGuess = 10;
+		boolean rHasGameEnded = core.requestHasGameEnded();
+		assertTrue(rHasGameEnded);
+	}
 	
-	public void testCalculatedGuesses(){
+	public void testRequestUpperBoundComputed(){
+		Core core = new Core();
+		core.setUpperBoundInput(1024);
+		assertEquals(1023, core.requestUpperBoundComputed);
+	}
+	/*
+		public void testCalculatedGuesses(){
 		calcGuesses = core.requestMaxNumGuesses();
 		assertEquals(testGuesses, calcGuesses);        // calculated number of guesses  matches the 
 								// expected number of guesses.
