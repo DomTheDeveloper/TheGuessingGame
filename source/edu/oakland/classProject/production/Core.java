@@ -52,7 +52,6 @@ public class Core {
 	* Returns the maximum number of guesses the System is 
 	* allowed to make. When the maxNumGuesses value is reached,
 	* the user wins the game and the System loses.
-	* @param computeMaxNumGuesses
 	* @return  the value of "maxNumGuesses" of type "int".
 	* @see requestMaxNumGuesses
 	*/
