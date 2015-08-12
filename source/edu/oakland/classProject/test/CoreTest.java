@@ -102,7 +102,7 @@ public class CoreTest extends TestCase{
 	public void testRequestUpperBoundComputed(){
 		Core core = new Core();
 		core.setUpperBoundInput(1024);
-		assertEquals(1023, core.requestUpperBoundComputed);
+		assertEquals(1023, core.requestUpperBoundComputed());
 	}
 	/*
 		public void testCalculatedGuesses(){
