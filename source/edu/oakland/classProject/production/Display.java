@@ -12,8 +12,8 @@ public class Display {
 	 /**
    	* The local variables that determines the min and max that a user
    	* can select from.
-   	* @param int MIN_UPPERBOUND_OPTION is the lowwest number possible.
-   	* @param int MAX_UPPERBOUND_OPTION is the hightest number possible.
+   	* int MIN_UPPERBOUND_OPTION is the lowest number possible.
+   	* int MAX_UPPERBOUND_OPTION is the highest number possible.
    	*/
 	int MIN_UPPERBOUND_OPTION = 1;
 	int MAX_UPPERBOUND_OPTION = 16;
@@ -25,13 +25,16 @@ public class Display {
 		"[A]: Advanced play",
 		"[Q]: Quit"
 	};
+	private String[] guessOptions = new String[]{
+		"[+]: My number is higher",
+		"[-]: My number is lower",
+		"[=]: My number is equal"
+	};
 	private char[] playSelections = optionsToSelections(playOptions);
-	
+	private char[] guessSelections = optionsToSelections(guessOptions);
 	 /**
 	*This method displays the main screen to the user.
 	* User must select an option.
-   	* @param diplayWelcomeMessage
-   	* @param diplayOptions
    	* @return char This returns the selection entered by user
    	* which should be redirected to the Play Selection.
    	*/
@@ -48,15 +51,50 @@ public class Display {
 		displayRequestUpperBoundSelection();
 		return requestEnterUpperBoundSelection();
 	}
-	/** 
+	/**
+	* This method communicates with the Main.java to pull what the user enter
+	* as the Upper Bound. It then displays what that number is. 
+	* @param maxNumOfGuesses		type int displays max number of guesses
+	* @param upperBoundComputed		type int displays the upper bound computed
 	*/
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
 		displayRange(upperBoundComputed);
 		displayReminder();
-		displayMaxNumOfGuesses(maxNumOfGuesses, false);
+		displayNumOfGuesses(maxNumOfGuesses, false);
 		displayRequestReturnKey();
 		requestReturnKey();
 	}
+	/**
+	* This is a get method prints the number guessed by user to compare it to 
+	* the system's guess.
+	* @param currentGuess			type int displays max number of guesses
+	* @param currentGuessIteration	type int displays the upper bound computed
+	* @return userFeedback	
+	*/
+	public char getGuessFeedback(int currentGuess, int currentGuessIteration){	
+		String lineToPrint = String.format("Guess #%d\nThe system has guessed %d.", currentGuessIteration, currentGuess);
+		System.out.println(lineToPrint);
+		char userFeedback = requestEnterGuessFeedback();
+		return userFeedback;
+	}
+	/**
+	* This is a get method prints the number guessed by user 
+	* @param guess			type int displays the system guess
+	* @param guessIteration	type int displays number of guesses
+	* @return ReturnKey	
+	*/
+	public void getEndGameConfirmation(int guess, int guessIteration){
+		System.out.println(String.format("The system has guessed your number, which is %d.", guess));
+		displayNumOfGuesses(guessIteration, true);
+		displayRequestReturnKey();
+		requestReturnKey();
+	}
+
+	private char requestEnterGuessFeedback(){
+		displayOptions(guessOptions);
+		return requestEnterSelection(guessSelections);
+	}
+			
 	/**
 	* Displays Welcome Message.
 	* Welcome title diplayed at the beginning of the game.
@@ -84,30 +122,62 @@ public class Display {
 		System.out.println("and do not change it during the game.");
 		System.out.println();
 	}
-	private void displayMaxNumOfGuesses(int maxNumOfGuesses, boolean gameEnded){
+	private void displayNumOfGuesses(int numOfGuesses, boolean gameEnded){
 		String verbTense = new String();
+		String plurality = new String();
 		
 		if (gameEnded)
 			verbTense = "successfully guessed";
 		else
 			verbTense = "will guess";
+			
+		if (numOfGuesses > 1){
+			plurality = "es";
+			if (!gameEnded)
+				plurality += " or fewer";
+		}
+		else
+			plurality = "";
 		
-		String lineToPrint = String.format("The game %s your number within %d guesses or less.", verbTense, maxNumOfGuesses);
+		String lineToPrint = String.format("The system %s your number in %d guess%s.", verbTense, numOfGuesses, plurality);
 		System.out.println(lineToPrint);
 		System.out.println();
-	}	
-	/**
- 	* 
- 	* 
- 	* 
- 	*/
+	}
+	
+	/* will return either int[] or int[][], based on dimensions input */
+	private Object generateUpperBoundOptions(int dimensions){
+		int numOfSelections = MAX_UPPERBOUND_OPTION-MIN_UPPERBOUND_OPTION;
+		
+		int[]   upperBoundOptions_1D = new int[numOfSelections+1];
+		int[][] upperBoundOptions_2D = new int[numOfSelections+1][2];
+		
+		for (int i = 0; i <= numOfSelections; i++){
+			int maxNumOfGuesses = i + MIN_UPPERBOUND_OPTION;
+			int upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
+			
+			//1D
+			upperBoundOptions_1D[i] = upperBound;
+			
+			//2D
+			upperBoundOptions_2D[i][0] = maxNumOfGuesses;
+			upperBoundOptions_2D[i][1] = upperBound;
+			
+		}
+		if (dimensions == 1)
+			return upperBoundOptions_1D;
+		else /// if (dimensions == 2)
+			return upperBoundOptions_2D;
+	}
+	
+	
 	private void displayRequestUpperBoundSelection(){
 		System.out.println("Please enter an option for your desired upper bound.");
-		for (int selection = MIN_UPPERBOUND_OPTION; selection <= MAX_UPPERBOUND_OPTION; selection++){
-			int maxNumOfGuesses = selection;
-			int upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
-			String option = String.format("[%d]: %d", selection, upperBound);
-			System.out.println(option);
+		int[][] upperBoundOptions = (int[][])generateUpperBoundOptions(2);
+		for (int[] option : upperBoundOptions){
+			int maxNumOfGuesses = option[0];
+			int upperBound      = option[1];
+
+			System.out.println(String.format("[%d]: %d", maxNumOfGuesses, upperBound));
 		}
 	}
 	/**
