@@ -15,10 +15,9 @@ public class Main{
 	private static Display display = new Display();
 	private static Core core = new Core();
 	
-	// The main method calls for the methods to start the game and then method for
-	// the system to guess and the player to interact with the system.
 	/**
-	* The main method that calculates the start of the game
+	* The main method calls for the methods to start the game and then method for
+	* the system to guess and the player to interact with the system.
 	* @return	
 	*/
 	public static void main(String[] args){
@@ -97,7 +96,6 @@ public class Main{
 	/**
 	* End of the game
 	* Display the guessed number and confirms the end results.
-	* @see endGame
 	*/
 	public static void endGame(){
 		display.getEndGameConfirmation(core.getGuess(), core.getGuessIteration());
