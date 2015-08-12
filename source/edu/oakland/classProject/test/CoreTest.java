@@ -72,16 +72,22 @@ public class CoreTest extends TestCase{
 	private int testUpperBound8=3;
 	*/
 	
-	
-	
 	public void setUp(){
 		Display display = new Display();
 		Core core = new Core();
-		Main main = new Main();
-		Main.startGame();
+		Main main = new Main(display, core);
+		main.startGame();
 	//	display.getUserNumber(testUserNumber);
 	//	display.requestEnterSelection(testPlay);
 	}
+	
+	public void testComputeMaxNumGuesses(){
+		computeMaxNumGuesses(testArray[0]);
+		assertEquals(testGuesses, maxNumGuesses);		
+	}
+	
+	
+	/*
 	
 	public void testCalculatedGuesses(){
 		calcGuesses = core.requestMaxNumGuesses();
