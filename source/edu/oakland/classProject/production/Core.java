@@ -149,8 +149,7 @@ public class Core {
 	}
 	/**
 	* This method calls for the requested Upper Bound and returns the computed uppper bound.
-	* @param computUpperBoundComputed
-	* @return calcUpperBound int type
+	* @return calcUpperBound int type calculates upper bound
 	*/
 	public int requestUpperBoundComputed() {
 		computeUpperBoundComputed();
