@@ -1,4 +1,4 @@
-package edu.oakland.classproject.test;
+package edu.oakland.classProject.test;
 
 import edu.oakland.classProject.production.*;
 import java.util.Arrays.*;
@@ -74,16 +74,15 @@ public class CoreTest extends TestCase{
 	
 	public void setUp(){
 		Display display = new Display();
-		Core core = new Core();
-		Main main = new Main(display, core);
-		main.startGame();
 	//	display.getUserNumber(testUserNumber);
 	//	display.requestEnterSelection(testPlay);
 	}
 	
 	public void testComputeMaxNumGuesses(){
-		computeMaxNumGuesses(testArray[0]);
-		assertEquals(testGuesses, maxNumGuesses);		
+		Core core = new Core();
+	//	Main main = new Main(display, core);
+		int maxNumGuesses = core.requestMaxNumGuesses();
+		assertEquals(testGuesses,maxNumGuesses);		
 	}
 	
 	
@@ -114,7 +113,7 @@ public class CoreTest extends TestCase{
 		assertTrue(testUserInput, main.getUserInput()); //compares the user input of "<"
 						//with what the main() receives
 	}
-	*/
+	
 	public void testFinalGuessCount(){
 		currentGuess = core.getGuessIteration();
 		testHasGameEnded = core.requestHasGameEnded();
