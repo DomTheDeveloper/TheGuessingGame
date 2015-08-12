@@ -143,6 +143,16 @@ public class Core {
 	}
 	
 	/**
+	* Returns the feedbackSelection set for when the user indicates his/her
+	* chosen number is greater, equal, or lower than the number the System
+	* guessed.
+	* @return the value of "feedbackSelection" of type "String"
+	*/
+	public String setGuessFeedbackSelection() {
+		return feedbackSelection;
+	}
+	
+	/**
 	* Sets the value of the hasGameEnded variable based on the state
 	* of the game
 	*/
