@@ -12,6 +12,7 @@ public class Main{
 	public int maxNumOfGuesses;
 	public int currentGuessIteration;
 	public int currentGuess;
+	public boolean gameEnded;
 	
 	public Main(){
 		display = new Display();
@@ -24,7 +25,6 @@ public class Main{
 	}
 	
 	public void execute(){
-		boolean gameEnded;
 		while (true){
 			core.reinitialize();
 			gameEnded = false;
@@ -64,7 +64,7 @@ public class Main{
 		return true;
 	}
 	
-	public int makeGuess(){
+	public int makeGuess(char guessFeedback){
 		currentGuessIteration = core.computeGuessIteration();
 		currentGuess = core.computeGuess();
 		
