@@ -19,13 +19,25 @@ public class Main{
 	// the system to guess and the player to interact with the system.
 	/**
 	* The main method that calculates the start of the game
-	* @param startGame
-	* @param makeGuess
-	* @see upperBoundComputed
+	* @see startGame
 	*/
 	public static void main(String[] args){
-		startGame();
-		makeGuess("higher");
+		boolean gameEnded;
+		while (true){
+			core.reinitialize();
+			gameEnded = false;
+			if (startGame()) {
+				core.setGuessFeedbackSelection("higher");
+				gameEnded = core.requestHasGameEnded();
+				while (gameEnded == false) {
+					makeGuess();
+					gameEnded = core.requestHasGameEnded();
+				}
+				endGame();
+			} else {
+				return;
+			}
+		}
 	}
 
 	/** 
@@ -55,7 +67,8 @@ public class Main{
 		int maxNumOfGuesses = core.getMaxNumOfGuesses();
 			
 		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
-			
+
+		return true;
 	}
 	/**
 	* Communicates with the Core to pull the user's number.
@@ -63,21 +76,33 @@ public class Main{
 	* @param currentGuessIteration
 	* @param currentGuess
 	*/
-	public static void makeGuess(String userSelection){
-		core.setGuessFeedbackSelection(userSelection);
+	public static int makeGuess(){
+		int currentGuessIteration = core.computeGuessIteration();
+		int currentGuess = core.computeGuess();
 		
-		int currentGuessIteration = core.getGuessIteration();
-		int currentGuess = core.getGuess();
-
+		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
 		
+		switch (guessFeedback){
+			case '+': //"My number is higher"
+				core.setGuessFeedbackSelection("higher");
+				break;
+			case '-': //"My number is lower"
+				core.setGuessFeedbackSelection("lower");
+				break;
+			case '=': //"My number is equal"
+				core.setGuessFeedbackSelection("equal");
+				break;
+		}
+		return currentGuess;
 	}
+	
 	/**
 	* End of the game
 	* Display the guessed number and confirms the end results.
 	* @see endGame
 	*/
 	public static void endGame(){
-		//display.getEndGameConfirmation(guess, guessIteration);
+		display.getEndGameConfirmation(core.getGuess(), core.getGuessIteration());
 	}
 	
 }
