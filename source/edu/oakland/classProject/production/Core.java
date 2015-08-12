@@ -42,7 +42,11 @@ public class Core {
 											// The selection that the user specifies in response to the 
 											// System's guess. The user may specify that the number
 											// guessed is higher, lower, or equal to the number he/she 
+	
 											// picked.
+	/**
+	* Resets all the values of the core object
+	*/
 	public void reinitialize(){
 		hasGameEnded = false;
 		inputUpperBound = 1024;
@@ -52,6 +56,10 @@ public class Core {
 		feedbackSelection = "";
 	}
 	
+	/**
+	* Computes the maximium number of guesses that the system will take to guess
+	* the user's number based on the upper bound
+	*/
 	private void computeMaxNumGuesses() {
 	    maxNumGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
 	}
@@ -60,7 +68,8 @@ public class Core {
 	* Returns the maximum number of guesses the System is 
 	* allowed to make. When the maxNumGuesses value is reached,
 	* the user wins the game and the System loses.
-	*@return returns the value of "maxNumGuesses" of type "int".
+	*@return the value of "maxNumGuesses" of type "int".
+	*@see computeMaxNumGuesses
 	*/
 	public int requestMaxNumGuesses() {
 		computeMaxNumGuesses();
@@ -68,7 +77,9 @@ public class Core {
 	}
 	
 	/**
-	* 
+	*Uses the value set by setGuessFeedbackSelection to calcuate
+	*the value of the system's next guess
+	*@return the value of "numberGuessed" op type "int"
 	*/
 	public int computeGuess() {
 		
@@ -85,9 +96,8 @@ public class Core {
 	}
 	
 	/**
-	* Calls a method that makes the next guess and returns
-	* that guess.
-	*@return returns the value of "numberGuessed" of type "int".
+	* Returns the numberGuessed value
+	*@return the value of "numberGuessed" of type "int".
 	*/
 	public int getGuess() {
 		return numberGuessed;
@@ -95,6 +105,7 @@ public class Core {
 
 	/**
 	* Iterates the guess counter when the System guesses a number.
+	*@return the value of "currentGuess" of type "int".
 	*/
 	public int computeGuessIteration() {
 		++currentGuess;
@@ -102,18 +113,26 @@ public class Core {
 	}
 	
 	/**
-	* Calls a method to iterate the guess counter and returns
-	* the value stored in the guess counter.
-	*@return returns the value of "currentGuess" of type "int".
+	* Returns value stored in the guess counter.
+	*@return the value of "currentGuess" of type "int".
 	*/
 	public int getGuessIteration() {
 		return currentGuess;
 	}
 	
+	/**
+	* This method sets the feedbackSelection as a String reference
+	* which will calculate feedselection as selection
+	*@param selection a String that should be equal to "higher" "lower" or "equal"
+	*/
 	public void setGuessFeedbackSelection(String selection) {
 		feedbackSelection = selection;
 	}
-		
+	
+	/**
+	* Sets the value of the hasGameEnded variable based on the state
+	* of the game
+	*/
 	private void computeHasGameEnded() {
 		if (feedbackSelection.equalsIgnoreCase("equal")) {
 			hasGameEnded = true;
@@ -128,13 +147,19 @@ public class Core {
 		}
 	}
 	
+	/**
+	* This boolean method tests to see if the game actually ended and returns the result.
+	* @param computeHasGameEnded	validates with Main to determine if the user
+	* 				selects to end the game.
+	* @return the value of "hasGameEnded" of type "boolean"
+	*/
 	public boolean requestHasGameEnded() {
 		computeHasGameEnded();
 		return hasGameEnded;
 	}
 	
 	/**
-	* For extra credit for when the user can set the upper bound.
+	* Calculates the upper bound based on the user's input.
 	*@param chosenUpperBound of type int is the upper bound.
 	*/
 	public void setUpperBoundInput(int chosenUpperBound) {
@@ -142,12 +167,17 @@ public class Core {
 	}
 	
 	/**
-	* Adjusts the upper bound to the specified upper bound - 1.
+	* Calculates the upper range based on the upper bound chosen.
 	*/
 	private void computeUpperBoundComputed() {
 		calcUpperBound = inputUpperBound - 1;	
 	}
 	
+	/**
+	* This method calls for the requested Upper Bound and returns the computed uppper bound.
+	* @see computUpperBoundComputed
+	* @return the value of "calcUpperBound" of type "int"
+	*/
 	public int requestUpperBoundComputed() {
 		computeUpperBoundComputed();
 		return calcUpperBound;
