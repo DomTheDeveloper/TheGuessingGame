@@ -16,34 +16,47 @@ package edu.oakland.classProject.production; // classProject be lowercase?
 
 public class Core {
 
-	private static boolean hasGameEnded = false;// Flag for if a condition was encountered
+	private boolean hasGameEnded = false;// Flag for if a condition was encountered
 											// that signifies the end of the game.
 	
-	private static int inputUpperBound = 1024;	// The maximum number the user can pick.
+	private int inputUpperBound = 1024;	// The maximum number the user can pick.
 											// 1024 by default. The user may also specify
 											// this value.
 	
-	private static int calcUpperBound;		// Adjusts the upper bound so the user can pick
+	private int calcUpperBound;		// Adjusts the upper bound so the user can pick
 											// a number from 1-1023.
-	private static int maxNumGuesses; 		// The number of guesses the System is
+	private int maxNumGuesses; 		// The number of guesses the System is
 											// allotted. If the System does not guess
 											// the number correctly in the guesses
 											// allotted to it, the System loses and
 											// the user wins.
 						
-	private static int numberGuessed = 0; 	// The number the game generates as a guess for each pass 
+	private int numberGuessed = 0; 	// The number the game generates as a guess for each pass 
 											// until the number is guessed, the last  iteration is the 
 											// correct guess
-	private static int previousGuess = 0;
-	private static int currentGuess = 0;	// Counter for the current guess count of the program that 
+	private int previousGuess = 0;
+	private int currentGuess = 0;	// Counter for the current guess count of the program that 
 											// updates with each iteration of the guess cycle		
 	
-	private static String feedbackSelection = ""; 	
+	private String feedbackSelection = ""; 	
 											// The selection that the user specifies in response to the 
 											// System's guess. The user may specify that the number
 											// guessed is higher, lower, or equal to the number he/she 
 	
 											// picked.
+	public Core(){}
+	public Core(boolean gameEnded, int upperBound, int calcBound, int maxGuesses, 
+		int guessedNumber, int prevGuess, int curGuess, String feedbackSel){
+		hasGameEnded = gameEnded;
+		inputUpperBound = upperBound;
+		calcUpperBound = calcBound;
+		maxNumGuesses = maxGuesses;
+		numberGuessed = guessedNumber;
+		previousGuess = prevGuess;
+		currentGuess = curGuess;
+		feedbackSelection = feedbackSel;
+	}
+
 	/**
 	* Resets all the values of the core object
 	*/
