@@ -5,10 +5,20 @@ import edu.oakland.classProject.production.Core;
 
 public class Main{
 
-	private static Display display = new Display();
-	private static Core core = new Core();
+	private Display display;
+	private Core core;
 	
-	public static void main(String[] args){
+	public Main(){
+		display = new Display();
+		core = new Core();
+	}
+	
+	public Main(Display disp, Core cor){
+		display = disp;
+		core = cor;
+	}
+	
+	public void execute(){
 		boolean gameEnded;
 		while (true){
 			core.reinitialize();
@@ -27,7 +37,7 @@ public class Main{
 		}
 	}
 	
-	public static boolean startGame(){
+	public boolean startGame(){
 		char playSelection = display.getPlaySelection();
 		switch (playSelection){
 			case 'Q': /// Quit
@@ -49,7 +59,7 @@ public class Main{
 		return true;
 	}
 	
-	public static int makeGuess(){
+	public int makeGuess(){
 		int currentGuessIteration = core.computeGuessIteration();
 		int currentGuess = core.computeGuess();
 		
@@ -69,8 +79,7 @@ public class Main{
 		return currentGuess;
 	}
 
-	public static void endGame(){
+	public void endGame(){
 		display.getEndGameConfirmation(core.getGuess(), core.getGuessIteration());
 	}
-	
 }
