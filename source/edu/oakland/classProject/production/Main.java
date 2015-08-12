@@ -19,7 +19,7 @@ public class Main{
 	// the system to guess and the player to interact with the system.
 	/**
 	* The main method that calculates the start of the game
-	* @see startGame
+	* @return	
 	*/
 	public static void main(String[] args){
 		boolean gameEnded;
@@ -41,11 +41,11 @@ public class Main{
 	}
 
 	/** 
-	*	The startGame method calls for the Display class to display the initial screen.
-	*	This will also read the initial user input for simple/advanced game selection.
-	* @param upperBoundComputed 	int calculated the Upper Bound called from the Core
-	* @param maxNumOfGuesses	int calculated the max number of guesses		
-	* @param playSelection 	Grabs the options from the display and calculates what each letter
+	*The startGame method calls for the Display class to display the initial screen.
+	*This will also read the initial user input for simple/advanced game selection.
+	* upperBoundComputed 	int calculated the Upper Bound called from the Core
+	* maxNumOfGuesses	int calculated the max number of guesses		
+	* playSelection 	Grabs the options from the display and calculates what each letter
 	* 			consists of. 
 	* @return 		"Q" will return to startGame
 	**/
@@ -72,9 +72,7 @@ public class Main{
 	}
 	/**
 	* Communicates with the Core to pull the user's number.
-	* @param userSelection
-	* @param currentGuessIteration
-	* @param currentGuess
+	* @return currentGuess	
 	*/
 	public static int makeGuess(){
 		int currentGuessIteration = core.computeGuessIteration();
