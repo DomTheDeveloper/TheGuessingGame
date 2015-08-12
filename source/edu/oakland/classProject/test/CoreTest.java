@@ -1,4 +1,4 @@
-package edu.oakland.classproject.test;
+package edu.oakland.classProject.test;
 
 import edu.oakland.classProject.production.*;
 import java.util.Arrays.*;
@@ -43,7 +43,7 @@ public class CoreTest extends TestCase{
 	private int calcGuesses=0;
 	private int upperBound=0;
 	private int currentGuess=0;
-	private char testUserInput = '<';
+	private String testUserInput = "+";
 	private int testUserNumber = 2;
 	private static boolean testHasGameEnded = false;
 	
@@ -72,16 +72,23 @@ public class CoreTest extends TestCase{
 	private int testUpperBound8=3;
 	*/
 	
-	
-	
 	public void setUp(){
 		Display display = new Display();
-		Core core = new Core();
-		Main main = new Main();
-		Main.startGame();
-	//	display.getUserNumber(testUserNumber);
-	//	display.requestEnterSelection(testPlay);
 	}
+	
+	public void testComputeMaxNumGuesses(){
+		Core core = new Core();
+		int maxNumGuesses = core.requestMaxNumGuesses();
+		assertEquals(testGuesses,maxNumGuesses);		
+	}
+	
+	public void testGetGuess(){
+		Core core = new Core ();
+		setGuessFeedbackSelection(testUserInput); // +
+		assertTrue(getGuess);
+	}
+	
+	/*
 	
 	public void testCalculatedGuesses(){
 		calcGuesses = core.requestMaxNumGuesses();
@@ -108,7 +115,7 @@ public class CoreTest extends TestCase{
 		assertTrue(testUserInput, main.getUserInput()); //compares the user input of "<"
 						//with what the main() receives
 	}
-	*/
+	
 	public void testFinalGuessCount(){
 		currentGuess = core.getGuessIteration();
 		testHasGameEnded = core.requestHasGameEnded();
