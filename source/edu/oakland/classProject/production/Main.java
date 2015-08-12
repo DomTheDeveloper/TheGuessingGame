@@ -28,11 +28,11 @@ public class Main{
 		while (true){
 			core.reinitialize();
 			gameEnded = false;
-			if (startGame()) {
+			if (startGame(false, null, null) != -1) {
 				core.setGuessFeedbackSelection("higher");
 				gameEnded = core.requestHasGameEnded();
 				while (gameEnded == false) {
-					makeGuess();
+					makeGuess(false, null);
 					gameEnded = core.requestHasGameEnded();
 				}
 				endGame();
@@ -42,33 +42,39 @@ public class Main{
 		}
 	}
 	
-	public boolean startGame(){
-		char playSelection = display.getPlaySelection();
+	public int startGame(boolean ui, Character _playSelection, Integer _upperBoundSelection){
+		char playSelection = ui ? _playSelection : display.getPlaySelection();
+		
 		switch (playSelection){
 			case 'Q': /// Quit
-				return false;
+				return -1;
 			case 'S': /// Simple Play
 				/// keep default upperBoundInput
 				break;
 			case 'A': /// Advanced Play
-				int upperBoundSelection = display.getUpperBoundSelection();
+				int upperBoundSelection = ui ? _upperBoundSelection : display.getUpperBoundSelection();
 				core.setUpperBoundInput(upperBoundSelection);
 				break;
 		}
 		
 		upperBoundComputed = core.requestUpperBoundComputed();
 		maxNumOfGuesses = core.requestMaxNumGuesses();
-			
-		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
+		
+		if (!ui)
+			display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
 
-		return true;
+		return maxNumOfGuesses;
 	}
 	
-	public int makeGuess(char guessFeedback){
+	
+	
+	public int makeGuess(boolean ui, Character _guessFeedback){
 		currentGuessIteration = core.computeGuessIteration();
 		currentGuess = core.computeGuess();
 		
-		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
+		char guessFeedback = ui ? _guessFeedback : display.getGuessFeedback(currentGuess, currentGuessIteration);
+		
+		core.setGuessFeedbackSelection(guessFeedback);
 		
 		switch (guessFeedback){
 			case '+': //"My number is higher"
