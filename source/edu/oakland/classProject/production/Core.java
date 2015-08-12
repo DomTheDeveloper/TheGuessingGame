@@ -23,9 +23,9 @@ public class Core {
 											// 1024 by default. The user may also specify
 											// this value.
 	
-	private static int calcUpperBound;		// Adjusts the upper bound so the user can pick
+	private static int upperBoundComputed;		// Adjusts the upper bound so the user can pick
 											// a number from 1-1023.
-	private static int maxNumGuesses; 		// The number of guesses the System is
+	private static int maxNumOfGuesses; 		// The number of guesses the System is
 											// allotted. If the System does not guess
 											// the number correctly in the guesses
 											// allotted to it, the System loses and
@@ -44,8 +44,8 @@ public class Core {
 											// guessed is higher, lower, or equal to the number he/she 
 											// picked.
 	
-	private void computeMaxNumGuesses() {
-	    maxNumGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
+	private void computeMaxNumOfGuesses() {
+	    maxNumOfGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
 	}
 	
 	/**
@@ -55,9 +55,9 @@ public class Core {
 	* @return  the value of "maxNumGuesses" of type "int".
 	* @see requestMaxNumGuesses
 	*/
-	public int requestMaxNumGuesses() {
-		computeMaxNumGuesses();
-	    return maxNumGuesses;
+	public int requestMaxNumOfGuesses() {
+		computeMaxNumOfGuesses();
+	    return maxNumOfGuesses;
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class Core {
 	* For extra credit for when the user can set the upper bound.
 	*@param chosenUpperBound of type int is the upper bound.
 	*/
-	public void setUpperBoundInput(int chosenUpperBound) {
+	public void setUpperBoundSelection(int chosenUpperBound) {
 		inputUpperBound = chosenUpperBound;
 	}
 	
@@ -145,7 +145,7 @@ public class Core {
 	* Adjusts the upper bound to the specified upper bound - 1.
 	*/
 	private void computeUpperBoundComputed() {
-		calcUpperBound = inputUpperBound - 1;	
+		upperBoundComputed = inputUpperBound - 1;	
 	}
 	/**
 	* This method calls for the requested Upper Bound and returns the computed uppper bound.
@@ -153,7 +153,7 @@ public class Core {
 	*/
 	public int requestUpperBoundComputed() {
 		computeUpperBoundComputed();
-		return calcUpperBound;
+		return upperBoundComputed;
 	}
 }
 
