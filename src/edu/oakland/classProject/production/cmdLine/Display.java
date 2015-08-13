@@ -1,9 +1,10 @@
 package edu.oakland.classProject.production.cmdLine;
 
 import java.util.*;
-import java.io.*;
 
 import edu.oakland.classProject.production.IDisplay;
+import edu.oakland.classProject.production.IDisplayGuess;
+import edu.oakland.classProject.production.IDisplayStart;
 
 /**
 *This class holds the methods involved with displaying the command line interface.

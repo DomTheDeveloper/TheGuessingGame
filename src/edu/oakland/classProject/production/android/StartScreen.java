@@ -2,7 +2,6 @@ package edu.oakland.classProject.production.android;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -14,11 +13,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import edu.oakland.classProject.production.IDisplay;
+import edu.oakland.classProject.production.IDisplayStart;
 import edu.oakland.classProject.production.Main;
 
 
-public class MainActivity extends Activity implements IDisplay {
+public class StartScreen extends Activity implements IDisplayStart {
 
     Main main;
 
@@ -41,7 +40,7 @@ public class MainActivity extends Activity implements IDisplay {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        main = new Main(MainActivity.this);
+        main = new Main(StartScreen.this);
 
         rbsPlayOptions = (RadioGroup) findViewById(R.id.rbsPlayOptions);
         rbBasic = (RadioButton) findViewById(R.id.rbBasic);
@@ -100,7 +99,7 @@ public class MainActivity extends Activity implements IDisplay {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this,
+                Toast.makeText(StartScreen.this,
                         "On Button Click : " +
                                 "\n" + String.valueOf(advSpinner.getSelectedItem()),
                         Toast.LENGTH_LONG).show();
@@ -173,22 +172,6 @@ public class MainActivity extends Activity implements IDisplay {
         //lblMaxNumOfGuesses.Text = userConfirmation; /// 10, 11, ...
 
         Toast.makeText(getApplicationContext(),userConfirmation, Toast.LENGTH_SHORT).show();
-
-        return;
-    }
-    public void displayGuessInfo(int currentGuess, int currentGuessIteration){
-        //lblCurrentGuess.Text = Integer.toString(currentGuess);
-        //lblCurrentGuessIteration = Integer.toString(currentGuessIteration);
-    }
-    public char getGuessFeedback(){
-        char guessFeedback = 'a';
-
-        //guessFeedback = btnFeedback_clicked.text; // +, -, or =
-
-        return guessFeedback;
-    }
-    public void getEndGameConfirmation(int guess, int guessIteration){
-        //lblGameEnded.Visible = true;
 
         return;
     }
