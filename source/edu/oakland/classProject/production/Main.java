@@ -1,11 +1,13 @@
 package edu.oakland.classProject.production;
 
 import edu.oakland.classProject.production.Display;
+import edu.oakland.classProject.production.IDisplay;
+
 import edu.oakland.classProject.production.Core;
 
 public class Main{
 
-	private Display display;
+	private IDisplay display;
 	private Core core;
 	
 	public int upperBoundComputed;
@@ -18,7 +20,7 @@ public class Main{
 		core = new Core();
 	}
 	
-	public Main(Display disp, Core cor){
+	public Main(IDisplay disp, Core cor){
 		display = disp;
 		core = cor;
 	}
