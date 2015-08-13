@@ -22,12 +22,13 @@ public class DisplayStart extends Activity implements IDisplayStart {
     // INSTANCE VARIABLE - Create instance of Main class, and that instance will be loaded for the entire game
     Main main;
 
-    private Spinner advSpinner;
+    private Spinner sprAdvanced;
     private RadioGroup rbsPlayOptions;
     private RadioButton rbBasic;
     private RadioButton rbAdvanced;
     private TextView tvBasic;
     private TextView tvAdvanced;
+    private TextView tvMaxNumOfGuesses;
     private Button btnGuess;
     private Button btnNumChosen;
     private Integer[] upperBoundSelection = {1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535};
@@ -47,19 +48,19 @@ public class DisplayStart extends Activity implements IDisplayStart {
         rbAdvanced = (RadioButton) findViewById(R.id.rbAdvanced);
         tvBasic = (TextView) findViewById(R.id.tvBasic);
         tvAdvanced = (TextView) findViewById(R.id.tvAdvanced);
-		advSpinner = (Spinner) findViewById(R.id.advSpinner);
+		sprAdvanced = (Spinner) findViewById(R.id.sprAdvanced);
         btnGuess = (Button) findViewById(R.id.btnGuess);
+        tvMaxNumOfGuesses = (TextView) findViewById(R.id.tvMaxNumOfGuesses);
         btnNumChosen = (Button) findViewById(R.id.btnNumChosen);
 
 		ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, upperBoundSelection);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		advSpinner.setAdapter(dataAdapter);
+        sprAdvanced.setAdapter(dataAdapter);
         //advSpinner.getSelectedItem();
 
 		// Li
 		addVisibilityChangeOnBasicRadioButtonSelection();
         addVisibilityChangeOnAdvancedRadioButtonSelection();
-        addListenerOnSpinnerItemSelection();
         addChosenNumberButtonListener();
 	}
 
@@ -69,11 +70,14 @@ public class DisplayStart extends Activity implements IDisplayStart {
             @Override
             public void onClick(View v) {
                 main.startGame();
+
+                //Disable other radio button and Spinner
                 rbBasic.setEnabled(false);
                 rbAdvanced.setEnabled(false);
-                advSpinner.setEnabled(false);
+                sprAdvanced.setEnabled(false);
                 btnNumChosen.setEnabled(false);
                 btnGuess.setVisibility(View.VISIBLE);
+                tvMaxNumOfGuesses.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -82,7 +86,6 @@ public class DisplayStart extends Activity implements IDisplayStart {
 
     /**Gets whether Basic or Advanced is selected*/
     public char getPlaySelection() {
-        //Disable other radio button and Spinner
         int rbId = rbsPlayOptions.getCheckedRadioButtonId();
         RadioButton rb = (RadioButton) findViewById(rbId);
         String result = rb.getText().toString();
@@ -96,31 +99,18 @@ public class DisplayStart extends Activity implements IDisplayStart {
     public int getUpperBoundSelection(){
         int upperBoundSelection = 0;
 
-        //upperBoundSelection = ddlUpperBound.selectedValue; /// 512, 1024, ...
+        //upperBoundSelection = sprAdvanced.selectedValue; /// 512, 1024, ...
 
         return upperBoundSelection;
     }
     public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
-        String userConfirmation = String.format("The system will guess your number in %d guesses.", maxNumOfGuesses);
+        String strFormat = getResources().getString(R.string.max_num_of_guesses);
+        String strMessage = String.format(strFormat, maxNumOfGuesses);
 
-        //lblMaxNumOfGuesses.Text = userConfirmation; /// 10, 11, ...
-
-        Toast.makeText(getApplicationContext(),userConfirmation, Toast.LENGTH_SHORT).show();
+        tvMaxNumOfGuesses.setText(strMessage);
 
         return;
     }
-
-
-    // Add spinner data
-
-	public void addListenerOnSpinnerItemSelection(){
-				advSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-	}
-
-
-
-
-
 
     /**Shows the instructions for Basic gameplay, when the "Basic" radio button is selected */
     public void addVisibilityChangeOnBasicRadioButtonSelection() {
@@ -144,10 +134,10 @@ public class DisplayStart extends Activity implements IDisplayStart {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     tvAdvanced.setVisibility(View.VISIBLE);
-                    advSpinner.setVisibility(View.VISIBLE);
+                    sprAdvanced.setVisibility(View.VISIBLE);
                 } else {
                     tvAdvanced.setVisibility(View.GONE);
-                    advSpinner.setVisibility(View.GONE);
+                    sprAdvanced.setVisibility(View.GONE);
                 }
             }
         });
