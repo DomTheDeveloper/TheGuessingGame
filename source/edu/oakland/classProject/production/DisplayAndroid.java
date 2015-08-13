@@ -3,22 +3,30 @@ package edu.oakland.classProject.production;
 public class DisplayAndroid implements IDisplay{
 
 	char guessFeedback;
+	int upperBoundSelection;
+	char playSelection;
+	
+	/* All button clicks happen in MainActivity,
+	In the button click methods,
+		- the set methods are called
+		- the main.activity() ie playGame(), makeGuess() is called (which calls the getters)
+	*/
 
-	public char getPlaySelection(){
-		char playSelection;
-		
+	public void setPlaySelection(RadioButton rbSimple, RadioButton rbAdvanced){
 		if (rbSimple.Checked)
 			playSelection = 'S';
-		else /// if (rbAdvanced.Checked)
+		else if (rbAdvanced.Checked)
 			playSelection = 'A';
-		
+		else
+			playSelection = 'Q';
+	}
+	public char getPlaySelection(){
 		return playSelection;
 	}
-	public int getUpperBoundSelection(){
-		int upperBoundSelection;
-		
+	public void setUpperBoundSelection(DropDownList ddlUpperBound){	
 		upperBoundSelection = ddlUpperBound.selectedValue;
-		
+	}
+	public int getUpperBoundSelection(){
 		return upperBoundSelection;
 	}
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
@@ -26,8 +34,8 @@ public class DisplayAndroid implements IDisplay{
 		
 		return;
 	}
-	public void setGuessFeedback(char _guessFeedback){
-		guessFeedback = _guessFeedback;
+	public void setGuessFeedback(Button btnFeedback){
+		guessFeedback = btnFeedback.text;
 	}
 	public char getGuessFeedback(int currentGuess, int currentGuessIteration){
 		lblCurrentGuess.Text = Integer.toString(currentGuess);
