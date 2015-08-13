@@ -38,7 +38,7 @@ public class Core {
 	private int currentGuess = 0;	// Counter for the current guess count of the program that 
 											// updates with each iteration of the guess cycle		
 	
-	private String feedbackSelection = ""; 	
+	private String feedbackSelection = "initial"; 	
 											// The selection that the user specifies in response to the 
 											// System's guess. The user may specify that the number
 											// guessed is higher, lower, or equal to the number he/she 
@@ -66,7 +66,7 @@ public class Core {
 		numberGuessed = 0;
 		previousGuess = 0;
 		currentGuess = 0;
-		feedbackSelection = "";
+		feedbackSelection = "initial";
 	}
 	
 	/**
@@ -96,12 +96,13 @@ public class Core {
 	*/
 	public int computeGuess() {
 		
-		if(feedbackSelection.equalsIgnoreCase("lower")) {
-			numberGuessed = (int) Math.ceil(previousGuess - 
+		if ( feedbackSelection.equalsIgnoreCase("higher")  ||
+			 feedbackSelection.equalsIgnoreCase("initial") ){
+			numberGuessed = (int) Math.ceil(previousGuess + 
 							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
-		else if(feedbackSelection.equalsIgnoreCase("higher")) {
-			numberGuessed = (int) Math.ceil(previousGuess + 
+		else if (feedbackSelection.equalsIgnoreCase("lower")) {
+			numberGuessed = (int) Math.ceil(previousGuess - 
 							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
 		previousGuess = numberGuessed;
