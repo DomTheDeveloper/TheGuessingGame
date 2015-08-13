@@ -50,9 +50,7 @@ public class Main{
 
 		return true;
 	}
-	
-	
-	
+	/// makeInitialGuess and makeSubsequentGuess
 	public boolean makeGuess(){
 		if (core.requestHasGameEnded())
 			return false; /// do not make guess

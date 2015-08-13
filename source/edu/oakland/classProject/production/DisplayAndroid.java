@@ -1,46 +1,39 @@
 package edu.oakland.classProject.production;
 
+import edu.oakland.classProject.android.MainActivity;
+
 public class DisplayAndroid implements IDisplay{
 
-	char guessFeedback;
-	int upperBoundSelection;
-	char playSelection;
-	
 	/* All button clicks happen in MainActivity,
-	In the button click methods,
-		- the set methods are called
-		- the main.activity() ie playGame(), makeGuess() is called (which calls the getters)
+	In the button click methods, the main.activity() ie playGame(), makeGuess() is called (which calls the getters)
 	*/
-
-	public void setPlaySelection(RadioButton rbSimple, RadioButton rbAdvanced){
+	public char getPlaySelection(){
+		char playSelection;
+		
 		if (rbSimple.Checked)
 			playSelection = 'S';
 		else if (rbAdvanced.Checked)
 			playSelection = 'A';
 		else
 			playSelection = 'Q';
-	}
-	public char getPlaySelection(){
+		
 		return playSelection;
 	}
-	public void setUpperBoundSelection(DropDownList ddlUpperBound){	
-		upperBoundSelection = ddlUpperBound.selectedValue;
-	}
 	public int getUpperBoundSelection(){
+		int upperBoundSelection = ddlUpperBound.selectedValue; /// 512, 1024, ...
+		
 		return upperBoundSelection;
 	}
 	public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
-		lblMaxNumOfGuesses.Text = String.format("The system will guess your number in %d guesses.", maxNumOfGuesses);
+		lblMaxNumOfGuesses.Text = String.format("The system will guess your number in %d guesses.", maxNumOfGuesses); /// 10, 11, ...
 		
 		return;
-	}
-	public void setGuessFeedback(Button btnFeedback){
-		guessFeedback = btnFeedback.text;
 	}
 	public char getGuessFeedback(int currentGuess, int currentGuessIteration){
 		lblCurrentGuess.Text = Integer.toString(currentGuess);
 		lblCurrentGuessIteration = Integer.toString(currentGuessIteration);
 		
+		char guessFeedback = btnFeedback_clicked.text; // +, -, or =
 		return guessFeedback;
 	}
 	public void getEndGameConfirmation(int guess, int guessIteration){
