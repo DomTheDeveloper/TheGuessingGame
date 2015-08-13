@@ -121,7 +121,7 @@ public class MainTest extends TestCase{
 		
 		assertEquals(1, main.currentGuessIteration);
 		assertEquals(512, main.currentGuess);
-		//assertEquals(1023, main.guessFeedback); // make another
+		//assertEquals(1023, displaystart.guessFeedback); // make another
 	}
 		
 

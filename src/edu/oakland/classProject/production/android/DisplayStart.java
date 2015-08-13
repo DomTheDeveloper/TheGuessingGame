@@ -3,7 +3,6 @@ package edu.oakland.classProject.production.android;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -19,6 +18,8 @@ import edu.oakland.classProject.production.Main;
 
 public class DisplayStart extends Activity implements IDisplayStart {
 
+
+    // INSTANCE VARIABLE - Create instance of Main class, and that instance will be loaded for the entire game
     Main main;
 
     private Spinner advSpinner;
@@ -31,14 +32,12 @@ public class DisplayStart extends Activity implements IDisplayStart {
     private Button btnNumChosen;
     private Integer[] upperBoundSelection = {1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535};
 
-    // INSTANCE VARIABLE - Create instance of Main class, and that instance will be loaded for the entire game
 
     /** Called when the activity is first created. */
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.displaystart);
 
         main = new Main();
         main.setDisplayStart(DisplayStart.this);
@@ -60,55 +59,66 @@ public class DisplayStart extends Activity implements IDisplayStart {
 		// Li
 		addVisibilityChangeOnBasicRadioButtonSelection();
         addVisibilityChangeOnAdvancedRadioButtonSelection();
-
         addListenerOnSpinnerItemSelection();
-		addListenerOnButton();
-
         addChosenNumberButtonListener();
-
-
 	}
 
-	// Add spinner data
-
-	public void addListenerOnSpinnerItemSelection(){
-				advSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-	}
-
-//    Intent intent1 = new Intent(this, secondActivity.class);
-//    startIntent(intent1);
 
     public void addChosenNumberButtonListener() {
         btnNumChosen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 main.startGame();
+                rbBasic.setEnabled(false);
+                rbAdvanced.setEnabled(false);
+                advSpinner.setEnabled(false);
+                btnNumChosen.setEnabled(false);
+                btnGuess.setVisibility(View.VISIBLE);
             }
         });
     }
+    //    Intent intent1 = new Intent(this, secondActivity.class);
+    //    startIntent(intent1);
 
-	//get the selected dropdown list value
-	public void addListenerOnButton() {
+    /**Gets whether Basic or Advanced is selected*/
+    public char getPlaySelection() {
+        //Disable other radio button and Spinner
+        int rbId = rbsPlayOptions.getCheckedRadioButtonId();
+        RadioButton rb = (RadioButton) findViewById(rbId);
+        String result = rb.getText().toString();
+        if (result.equals("Basic")) {
+            return 'S';
+        } else {
+            return 'A';
+        }
+    }
 
-		//advSpinner = (Spinner) findViewById(R.id.advSpinner);
+    public int getUpperBoundSelection(){
+        int upperBoundSelection = 0;
 
-        //Button guessButton;
-        btnGuess = (Button) findViewById(R.id.btnGuess);
+        //upperBoundSelection = ddlUpperBound.selectedValue; /// 512, 1024, ...
 
-        btnGuess.setOnClickListener(new OnClickListener() {
+        return upperBoundSelection;
+    }
+    public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
+        String userConfirmation = String.format("The system will guess your number in %d guesses.", maxNumOfGuesses);
 
-            @Override
-            public void onClick(View v) {
+        //lblMaxNumOfGuesses.Text = userConfirmation; /// 10, 11, ...
 
-                Toast.makeText(DisplayStart.this,
-                        "On Button Click : " +
-                                "\n" + String.valueOf(advSpinner.getSelectedItem()),
-                        Toast.LENGTH_LONG).show();
-            }
+        Toast.makeText(getApplicationContext(),userConfirmation, Toast.LENGTH_SHORT).show();
 
-        });
+        return;
+    }
 
+
+    // Add spinner data
+
+	public void addListenerOnSpinnerItemSelection(){
+				advSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 	}
+
+
+
 
 
 
@@ -142,39 +152,6 @@ public class DisplayStart extends Activity implements IDisplayStart {
             }
         });
     }
-    /**Gets whether Basic or Advanced is selected*/
-    public char getPlaySelection() {
 
-        //Disable other radio button and Spinner
-        rbBasic.setEnabled(false);
-        rbAdvanced.setEnabled(false);
-        advSpinner.setEnabled(false);
-
-        int rbId = rbsPlayOptions.getCheckedRadioButtonId();
-        RadioButton rb = (RadioButton) findViewById(rbId);
-        String result = rb.getText().toString();
-        if (result.equals("Basic")) {
-            return 'S';
-        } else {
-            return 'A';
-        }
-    }
-
-    public int getUpperBoundSelection(){
-        int upperBoundSelection = 0;
-
-        //upperBoundSelection = ddlUpperBound.selectedValue; /// 512, 1024, ...
-
-        return upperBoundSelection;
-    }
-    public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses){
-        String userConfirmation = String.format("The system will guess your number in %d guesses.", maxNumOfGuesses);
-
-        //lblMaxNumOfGuesses.Text = userConfirmation; /// 10, 11, ...
-
-        Toast.makeText(getApplicationContext(),userConfirmation, Toast.LENGTH_SHORT).show();
-
-        return;
-    }
 
 }

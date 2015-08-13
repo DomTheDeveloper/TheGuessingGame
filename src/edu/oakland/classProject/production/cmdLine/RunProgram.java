@@ -9,7 +9,7 @@ public class RunProgram{
 		Main main = new Main(display);
 
 		while(main.startGame()){
-			while(main.makeGuess()){
+			while(main.makeGuess()) {
 				main.giveFeedback();
 			}
 			main.endGame();

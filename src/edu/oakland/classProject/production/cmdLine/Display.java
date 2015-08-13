@@ -1,8 +1,8 @@
 package edu.oakland.classProject.production.cmdLine;
 
 import java.util.*;
-
 import edu.oakland.classProject.production.IDisplay;
+
 import edu.oakland.classProject.production.IDisplayGuess;
 import edu.oakland.classProject.production.IDisplayStart;
 
@@ -35,7 +35,7 @@ public class Display implements IDisplay {
 	private char[] playSelections = optionsToSelections(playOptions);
 	private char[] guessSelections = optionsToSelections(guessOptions);
 	 /**
-	*This method displays the main screen to the user.
+	*This method displays the displaystart screen to the user.
 	* User must select an option.
    	* @param diplayWelcomeMessage
    	* @param diplayOptions

@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.oakland.classProject.production.IDisplayGuess;
-import edu.oakland.classProject.production.android.R;
 
 public class DisplayGuess extends Activity implements IDisplayGuess {
 
@@ -31,7 +30,7 @@ public class DisplayGuess extends Activity implements IDisplayGuess {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guess_screen);
+        setContentView(R.layout.displayguess);
     }
 
     @Override

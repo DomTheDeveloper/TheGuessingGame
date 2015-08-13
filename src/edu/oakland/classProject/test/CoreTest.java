@@ -36,7 +36,7 @@ public class CoreTest extends TestCase{
 				  the upper bound given to the program
 	*/
 //	private Core core;
-//	private Main main;
+//	private Main displaystart;
 //	private Display display;
 	private String testPlay = "P";
 	private int testGuesses = 10;
@@ -127,8 +127,8 @@ public class CoreTest extends TestCase{
 	public void testUserEntry0(){
 		display.getUserInput(testUserInput); //this assumes that the game is asking
 						// if the guess is larger or smaller than the user number
-		assertTrue(testUserInput, main.getUserInput()); //compares the user input of "<"
-						//with what the main() receives
+		assertTrue(testUserInput, displaystart.getUserInput()); //compares the user input of "<"
+						//with what the displaystart() receives
 	}
 	
 	public void testFinalGuessCount(){

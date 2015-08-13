@@ -19,8 +19,8 @@ public class Main{
 
     public Main(IDisplay _display) {
         this();
-        setDisplayStart(displayStart);
-        setDisplayGuess(displayGuess);
+        setDisplayStart(_display);
+        setDisplayGuess(_display);
     }
 
     public Main(){

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myfirstapp.test">
+    package="edu.oakland.classProject.production.android.test">
 
     <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="21" />
 
@@ -9,8 +9,8 @@
     </application>
 
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-                     android:targetPackage="com.example.myfirstapp"
+                     android:targetPackage="edu.oakland.classProject.production.android"
                      android:handleProfiling="false"
                      android:functionalTest="false"
-                     android:label="Tests for com.example.myfirstapp"/>
+                     android:label="Tests for edu.oakland.classProject.production.android"/>
 </manifest>
