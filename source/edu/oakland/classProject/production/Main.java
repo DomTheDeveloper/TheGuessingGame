@@ -1,7 +1,6 @@
 package edu.oakland.classProject.production;
 
 import edu.oakland.classProject.production.IDisplay;
-
 import edu.oakland.classProject.production.Core;
 
 public class Main{

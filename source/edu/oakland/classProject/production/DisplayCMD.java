@@ -8,7 +8,7 @@ import java.io.*;
 *@author Bart Tokarz / Ashley Taylor
 *@version "version 0.0.2" "150803"
 */
-public class Display implements IDisplay{
+public class DisplayCMD implements IDisplay{
 	 /**
    	* The local variables that determines the min and max that a user
    	* can select from.
