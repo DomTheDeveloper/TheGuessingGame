@@ -97,9 +97,9 @@ public class DisplayStart extends Activity implements IDisplayStart {
     }
 
     public int getUpperBoundSelection(){
-        int upperBoundSelection = 0;
+        int upperBoundSelection;
 
-        //upperBoundSelection = sprAdvanced.selectedValue; /// 512, 1024, ...
+        upperBoundSelection = sprAdvanced.getSelectedItemPosition() + 1;
 
         return upperBoundSelection;
     }
