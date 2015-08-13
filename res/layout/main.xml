@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:id="@+id/startScreen"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_title"
+        android:textStyle="bold"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbsPlayOptions"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="64dp">
+        android:id="radioGroupId
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/basic_rb_text"
+            android:id="@+id/rbBasic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/basic_instructions_text"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/tvBasic"
+            android:visibility="gone"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/advanced_rb_text"
+            android:id="@+id/rbAdvanced" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/advanced_instructions_text"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/tvAdvanced"
+            android:visibility="gone" />
+
+    </RadioGroup>
+
+
+    <Spinner
+        android:id="@+id/advSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:prompt="@string/spinner_prompt"
+        android:visibility="gone"
+        android:spinnerMode="dropdown" />
+
+        <!--android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerAdv"
+        android:background="@android:drawable/btn_dropdown"
+        android:layout_weight="0.05"
+        android:spinnerMode="dropdown"
+        android:longClickable="false"
+        android:options="@string/options"/> -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guess_number_button"
+        android:layout_marginTop="25dp"
+        android:id="@+id/btnGuess"
+        android:layout_below="@+id/btnNumChosen"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chosen_number_button"
+        android:id="@+id/btnNumChosen"
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="151dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+
