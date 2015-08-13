@@ -1,0 +1,38 @@
+/**
+* Class Project ("The Guessing Game") Team Assignments
+* @created DD_150728_1537
+* @edited  DD_150728_1537
+*/
+
+[VPE]LB Leon Brooks
+
+[LSI- PM]JL Josh Levoir
+[LSI-APM]AC Austin Copeman
+[LSI- IM]EM Eric Maul
+
+[ UI-TL]CH Chris Hooper
+[ UI-LE]DK David Keller
+
+[APP-TL]DD Dominic Dabish
+[APP-LE]GK Greg Kabacinski
+
+[APP-CTs] (subject to change):
+edu.oakland.classProject.production.Core
+#1 RW Renne Wise
+#1 DC David Chong
+
+edu.oakland.classProject.production.Display
+#2 AT Ashley Taylor
+#2 BT Bartlomiej Tokarz
+
+edu.oakland.classProject.test.CoreTest
+#3 CL Casey Letarte
+#3 MS Najuka Sakpal
+
+LSI
+#4 KM Kevin Macek
+#4 WY Waseem Yousif
+
+[APP] Seating assignment:
+[1-2] [T L] [1-1] [2-1] [2-2]
+[3-1] [3-2] [L E] [4-1] [4-2]

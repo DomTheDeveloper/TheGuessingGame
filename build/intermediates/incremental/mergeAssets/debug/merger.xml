@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\rkline.TREVA6\Downloads\GuessingGameCHv1.3\MyfirstApp\assets"/></dataSet><dataSet config="debug"><source path="C:\Users\rkline.TREVA6\Downloads\GuessingGameCHv1.3\MyfirstApp\build-types\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Users\rkline.TREVA6\Documents\GitHub\TheGuessingGame\assets"/></dataSet><dataSet config="debug"><source path="C:\Users\rkline.TREVA6\Documents\GitHub\TheGuessingGame\build-types\debug\assets"/></dataSet></merger>

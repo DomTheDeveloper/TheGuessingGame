@@ -8,8 +8,6 @@ package edu.oakland.classProject.production; // classProject be lowercase?
 * picked, the upper bound (the highest number the user is allowed to pick), 
 * and performing a binomial in order to efficiently guess the number the user
 * picked.
-
-*@author Renee Wise and David Chong
 *@version version 1.0 150804
 *@since version 1.0
 */

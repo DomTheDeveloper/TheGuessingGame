@@ -13,18 +13,9 @@ public class Main{
 	public int currentGuessIteration;
 	public int currentGuess;
 	
-	public Main(IDisplay _display){
+	public Main(IDisplay _display) {
 		display = _display;
 		core = new Core();
-	}
-	
-	public void execute(){
-		while(startGame()){
-			while(makeGuess()){
-				giveFeedback();
-			}
-			endGame();
-		}
 	}
 	
 	public boolean startGame(){

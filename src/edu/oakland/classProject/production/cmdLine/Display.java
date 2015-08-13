@@ -1,14 +1,15 @@
-package edu.oakland.classProject.production;
+package edu.oakland.classProject.production.cmdLine;
 
 import java.util.*;
 import java.io.*;
 
+import edu.oakland.classProject.production.IDisplay;
+
 /**
 *This class holds the methods involved with displaying the command line interface.
-*@author Bart Tokarz / Ashley Taylor
 *@version "version 0.0.2" "150803"
 */
-public class DisplayCMD implements IDisplay{
+public class Display implements IDisplay {
 	 /**
    	* The local variables that determines the min and max that a user
    	* can select from.

@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.myfirstapp;
+package edu.oakland.classProject.production.android;
 
 public final class R {
     public static final class attr {

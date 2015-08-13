@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/rkline.TREVA6/Downloads/GuessingGameCHv1.3/MyfirstApp/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/rkline.TREVA6/Documents/GitHub/TheGuessingGame/res/values/strings.xml -->
     <eat-comment/>
     <string name="advanced_instructions_text">Please choose a number between 1 and the Upper Bound of your choice:</string>
     <string name="advanced_rb_text">Advanced</string>

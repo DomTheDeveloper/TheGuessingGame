@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package edu.oakland.classProject.production.android;
 
 import android.app.Activity;
 import android.os.Bundle;
