@@ -17,17 +17,16 @@ public class Main{
 		return main;
 	}
 
-	public Main(IDisplay _display) {
-		this();
-		displayStart = _display;
-		displayGuess = _display;
-	}
+    public Main(IDisplay _display) {
+        this();
+        setDisplayStart(displayStart);
+        setDisplayGuess(displayGuess);
+    }
 
-	public Main(){
-		main = this;
-		core = new Core();
-	}
-
+    public Main(){
+        main = this;
+        core = new Core();
+    }
 	public void setDisplayStart(IDisplayStart _displayStart) {
 		displayStart = _displayStart;
 	}
@@ -35,7 +34,6 @@ public class Main{
 	public void setDisplayGuess(IDisplayGuess _displayGuess) {
 		displayGuess = _displayGuess;
 	}
-
 	
 	public boolean startGame(){
 		core.reinitialize();

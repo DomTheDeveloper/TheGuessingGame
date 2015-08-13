@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import edu.oakland.classProject.production.IDisplayGuess;
 import edu.oakland.classProject.production.android.R;
 
-public class GuessScreen extends Activity implements IDisplayGuess {
+public class DisplayGuess extends Activity implements IDisplayGuess {
 
 
     public void displayGuessInfo(int currentGuess, int currentGuessIteration){

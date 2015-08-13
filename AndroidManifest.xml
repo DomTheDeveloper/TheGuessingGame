@@ -8,7 +8,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".StartScreen"
+            android:name=".DisplayStart"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GuessScreen"
+            android:name=".DisplayGuess"
             android:label="@string/title_activity_guess_screen" >
         </activity>
     </application>

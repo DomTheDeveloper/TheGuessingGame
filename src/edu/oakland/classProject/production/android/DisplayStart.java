@@ -17,7 +17,7 @@ import edu.oakland.classProject.production.IDisplayStart;
 import edu.oakland.classProject.production.Main;
 
 
-public class StartScreen extends Activity implements IDisplayStart {
+public class DisplayStart extends Activity implements IDisplayStart {
 
     Main main;
 
@@ -40,7 +40,8 @@ public class StartScreen extends Activity implements IDisplayStart {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        main = new Main(StartScreen.this);
+        main = new Main();
+        main.setDisplayStart(DisplayStart.this);
 
         rbsPlayOptions = (RadioGroup) findViewById(R.id.rbsPlayOptions);
         rbBasic = (RadioButton) findViewById(R.id.rbBasic);
@@ -99,7 +100,7 @@ public class StartScreen extends Activity implements IDisplayStart {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(StartScreen.this,
+                Toast.makeText(DisplayStart.this,
                         "On Button Click : " +
                                 "\n" + String.valueOf(advSpinner.getSelectedItem()),
                         Toast.LENGTH_LONG).show();
@@ -131,7 +132,7 @@ public class StartScreen extends Activity implements IDisplayStart {
         rbAdvanced.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     tvAdvanced.setVisibility(View.VISIBLE);
                     advSpinner.setVisibility(View.VISIBLE);
                 } else {
