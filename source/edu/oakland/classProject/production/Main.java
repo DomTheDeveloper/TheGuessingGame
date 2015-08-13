@@ -1,6 +1,5 @@
 package edu.oakland.classProject.production;
 
-import edu.oakland.classProject.production.Display;
 import edu.oakland.classProject.production.IDisplay;
 
 import edu.oakland.classProject.production.Core;
@@ -15,14 +14,9 @@ public class Main{
 	public int currentGuessIteration;
 	public int currentGuess;
 	
-	public Main(){
-		display = new Display();
+	public Main(IDisplay _display){
+		display = _display;
 		core = new Core();
-	}
-	
-	public Main(IDisplay disp, Core cor){
-		display = disp;
-		core = cor;
 	}
 	
 	public void execute(){
