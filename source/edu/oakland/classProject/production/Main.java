@@ -21,6 +21,7 @@ public class Main{
 	public void execute(){
 		while(startGame()){
 			while(makeGuess()){
+				giveFeedback();
 			}
 			endGame();
 		}
@@ -50,7 +51,7 @@ public class Main{
 
 		return true;
 	}
-	/// makeInitialGuess and makeSubsequentGuess
+	
 	public boolean makeGuess(){
 		if (core.requestHasGameEnded())
 			return false; /// do not make guess
@@ -58,7 +59,16 @@ public class Main{
 		currentGuessIteration = core.computeGuessIteration();
 		currentGuess = core.computeGuess();
 		
-		char guessFeedback = display.getGuessFeedback(currentGuess, currentGuessIteration);
+		display.displayGuessInfo(currentGuess, currentGuessIteration);
+		
+		return true;
+	}
+	
+	public void giveFeedback(){
+		currentGuessIteration = core.getGuessIteration();
+		currentGuess = core.getGuess();
+	
+		char guessFeedback = display.getGuessFeedback();
 		
 		switch (guessFeedback){
 			case '+': //"My number is higher"
@@ -71,8 +81,6 @@ public class Main{
 				core.setGuessFeedbackSelection("equal");
 				break;
 		}
-		
-		return true;
 	}
 
 	public void endGame(){

@@ -29,10 +29,11 @@ public class DisplayAndroid implements IDisplay{
 		
 		return;
 	}
-	public char getGuessFeedback(int currentGuess, int currentGuessIteration){
+	public void displayGuessInfo(int currentGuess, int currentGuessIteration){
 		lblCurrentGuess.Text = Integer.toString(currentGuess);
 		lblCurrentGuessIteration = Integer.toString(currentGuessIteration);
-		
+	}
+	public char getGuessFeedback(){
 		char guessFeedback = btnFeedback_clicked.text; // +, -, or =
 		return guessFeedback;
 	}

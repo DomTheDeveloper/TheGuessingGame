@@ -61,10 +61,11 @@ public class DisplayCMD implements IDisplay{
 		displayRequestReturnKey();
 		requestReturnKey();
 	}
-
-	public char getGuessFeedback(int currentGuess, int currentGuessIteration){	
+	public void displayGuessInfo(int currentGuess, int currentGuessIteration){
 		String lineToPrint = String.format("Guess #%d\nThe system has guessed %d.", currentGuessIteration, currentGuess);
 		System.out.println(lineToPrint);
+	}
+	public char getGuessFeedback(){	
 		char userFeedback = requestEnterGuessFeedback();
 		return userFeedback;
 	}
