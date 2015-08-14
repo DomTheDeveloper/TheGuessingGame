@@ -117,7 +117,7 @@ public class MainActivity extends Activity implements IDisplay {
     }
 
     public int getUpperBoundSelection(){
-        int upperBoundSelection = sprAdvanced.getSelectedItemPosition() + 1;
+        int upperBoundSelection = sprAdvanced.getSelectedItemPosition() + MIN_UPPERBOUND_OPTION;
         return upperBoundSelection;
     }
     public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses) {
@@ -172,6 +172,7 @@ public class MainActivity extends Activity implements IDisplay {
     public void btnFeedback_OnClick(View view){
         currentFeedbackButton = (Button)view;
 
+        // if this is not the initial guess
         if (currentFeedbackButton.getId() != R.id.btnGuess)
             main.giveFeedback();
 

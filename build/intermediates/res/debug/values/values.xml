@@ -9,7 +9,7 @@
     <string name="action_settings">Settings</string>
     <string name="advanced_instructions_text">Please choose a number between 1 and the Upper Bound of your choice:</string>
     <string name="advanced_rb_text">Advanced</string>
-    <string name="app_name">Guessing Game</string>
+    <string name="app_name">The Guessing Game</string>
     <string name="app_title">The Guessing Game</string>
     <string name="basic_instructions_text">Please choose a number between 1–1023, inclusive</string>
     <string name="basic_rb_text">Basic</string>
