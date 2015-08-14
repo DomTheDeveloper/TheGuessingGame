@@ -1,18 +1,14 @@
 package edu.oakland.classProject.test;
 
-import edu.oakland.classProject.production.*;
-import edu.oakland.classProject.production.cmdLine.*;
+import edu.oakland.classProject.production.Core;
 import java.util.Arrays.*;
 import junit.framework.*;
 /**
-* CIT337 classProject
 * This class holds all of the JUnit test cases for testing the Core class.
 * CoreTest.java
-* @version: v0.8 20150810
+* @version: v1.0 20150814
 */
-
 public class CoreTest extends TestCase{
-	
 	/*
 	This JUnit test package creates an instance of the game and then provides 
 	simulated user input. The following 3 tests are used to show that the user
@@ -20,211 +16,94 @@ public class CoreTest extends TestCase{
 	that the number was guessed correctly in the maximum allowed amount of
 	guesses or less, and that the program is calculating the right number of
 	guesses based on the upperBound variable.	
-	
-	* userNumber = the number the user wants the game to try and guess without 
-	               knowing upfront
-
-	* numberGuessed = the number the game generates as a guess for each pass 
-	                  until the number is guessed, the last  iteration is the 
-	                  correct guess
-
-	* testGuesses = 10, the minimum number of guesses required for the program 
-	                to guess the number
-	* currentGuess = a counter for the current guess count of the program that 
-                     updates with each iteration of the guess cycle							
-	* calcGuess = the calculated number of guesses, by the program, based on 
-				  the upper bound given to the program
 	*/
-//	private Core core;
-//	private Main displaystart;
-//	private Display display;
-	private String testPlay = "P";
-	private int testGuesses = 10;
-	private int calcGuesses=0;
-	private int upperBound=0;
-	private int currentGuess=0;
-	private String testUserInput = "+";
-	private int testUserNumber = 2;
-	private static boolean testHasGameEnded = false;
+	private final int testMaxNumOfGuessesBasic = 10;
+	private final int testMaxNumOfGuessesAdvanced = 7;
+	private final int testGuessIterations = 3;
+	private final int testMaxNumOfGuessesHasGameEnded = 10;
+	private final int testCurrentGuessHasGameEnded = 10;
+	private final int testInitialGuess = 512;
+	private final int testSubsequentGuess_Higher = 768;
+	private final int testSubsequentGuess_Lower = 256;
+	private final int testUpperBoundInput = 10;
+	private final int testUpperBoundComputed = 1023;
 	
-	int[] testArray = {1024,512,256,128,64,32,16,8,4};
-	
-	/*
-	testArray = new int[9];
-	testArray[0]=1024;
-	testArray[1]=512;
-	testArray[2]=256;
-	testArray[3]=128;
-	testArray[4]=64;
-	testArray[5]=32;
-	testArray[6]=16;
-	testArray[7]=8;
-	testArray[8]=4;
-	
-	private int testUpperBound0=1023;
-	private int testUpperBound1=511;
-	private int testUpperBound2=255;
-	private int testUpperBound3=127;
-	private int testUpperBound4=63;
-	private int testUpperBound5=31;
-	private int testUpperBound6=15;
-	private int testUpperBound7=7;
-	private int testUpperBound8=3;
-	*/
-	
-	public void setUp(){
-		Display display = new Display();
-	}
-	
-	public void testComputeMaxNumGuesses(){
+	public void testComputeMaxNumGuessesBasic(){
 		Core core = new Core();
-		int maxNumGuesses = core.requestMaxNumGuesses();
-		assertEquals(testGuesses,maxNumGuesses);		
+		int maxNumOfGuesses = core.requestMaxNumGuesses();
+		assertEquals(maxNumOfGuesses,testMaxNumOfGuessesBasic);		
 	}
-	
+	public void testComputeMaxNumGuessesAdvanced(){
+		Core core = new Core();
+		core.setUpperBoundInput(testMaxNumOfGuessesAdvanced);
+		int maxNumOfGuesses = core.requestMaxNumGuesses();
+		assertEquals(maxNumOfGuesses,testMaxNumOfGuessesAdvanced);		
+	}
+	public void testComputeInitialGuess(){
+		Core core = new Core();
+		core.computeGuessIteration();
+		int numberGuessed = core.computeGuess();
+		assertEquals(testInitialGuess,numberGuessed);
+	}	
+	public void testComputeSubsequentGuess_Higher(){
+		Core core = new Core();
+		core.computeGuessIteration();
+		core.computeGuess();
+		core.setGuessFeedbackSelection("higher");
+		core.computeGuessIteration();
+		int numberGuessed = core.computeGuess();
+		assertEquals(testSubsequentGuess_Higher,numberGuessed);
+	}
+	public void testComputeSubsequentGuess_Lower(){
+		Core core = new Core();
+		core.computeGuessIteration();
+		core.computeGuess();
+		core.setGuessFeedbackSelection("lower");
+		core.computeGuessIteration();
+		int numberGuessed = core.computeGuess();
+		assertEquals(testSubsequentGuess_Lower,numberGuessed);
+	}
 	public void testGuessIteration(){
-		Core core = new Core ();
-		core.computeGuessIteration();
-		core.computeGuessIteration();
-		core.computeGuessIteration();
-		int guessIteration = core.getGuessIteration();
-		assertEquals(3,guessIteration);
-	}
-	
-	public void testHasGameEnded(){
 		Core core = new Core();
-		int maxNumGuesses =10;
-		int currentGuess = 10;
-		boolean rHasGameEnded = core.requestHasGameEnded();
-		assertTrue(rHasGameEnded);
+		
+		for (int i=0; i < testGuessIterations; i++){
+			core.computeGuessIteration();
+		}
+		
+		int guessIteration = core.getGuessIteration();
+		assertEquals(testGuessIterations,guessIteration);
 	}
-	
+	public void testHasGameEnded_False(){
+		Core core = new Core();
+		core.requestMaxNumGuesses();
+		core.computeGuessIteration();
+		core.computeGuess();
+		boolean hasGameEnded = core.requestHasGameEnded();
+		assertFalse(hasGameEnded);
+	}
+	public void testHasGameEnded_Equal(){
+		Core core = new Core();
+		core.requestMaxNumGuesses();
+		core.computeGuessIteration();
+		core.computeGuess();
+		core.setGuessFeedbackSelection("equal");
+		boolean hasGameEnded = core.requestHasGameEnded();
+		assertTrue(hasGameEnded);
+	}
+	public void testHasGameEnded_MaxNumOfGuessesExceeded(){
+		Core core = new Core();
+		core.setUpperBoundInput(1);
+		core.requestMaxNumGuesses();
+		core.computeGuessIteration();
+		core.computeGuess();
+		core.setGuessFeedbackSelection("equal");
+		boolean hasGameEnded = core.requestHasGameEnded();
+		assertTrue(hasGameEnded);
+	}
 	public void testRequestUpperBoundComputed(){
 		Core core = new Core();
-		core.setUpperBoundInput(1024);
-		assertEquals(1023, core.requestUpperBoundComputed());
+		core.setUpperBoundInput(testUpperBoundInput);
+		int upperBoundComputed = core.requestUpperBoundComputed();
+		assertEquals(testUpperBoundComputed, upperBoundComputed);
 	}
-	/*
-		public void testCalculatedGuesses(){
-		calcGuesses = core.requestMaxNumGuesses();
-		assertEquals(testGuesses, calcGuesses);        // calculated number of guesses  matches the 
-								// expected number of guesses.
-	}
-	
-	public void testUpperBound0(){
-		
-		for (int i=0; i <testArray.length ; ++i){
-			assertEquals(testArray[i], core.requestUpperBoundComputed());
-			
-		}
-	
-		// upperBound = Main.upperBoundComputed();
-		// assertEquals(testUpperBound0,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	/*
-	public void testUserEntry0(){
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUserInput, displaystart.getUserInput()); //compares the user input of "<"
-						//with what the displaystart() receives
-	}
-	
-	public void testFinalGuessCount(){
-		currentGuess = core.getGuessIteration();
-		testHasGameEnded = core.requestHasGameEnded();
-		assertTrue(testGuesses >= currentGuess);		// compares the number of guesses against the
-								// expected number guesses and that they are true
-		
-		assertTrue(testHasGameEnded);	// asserting that the hasGameEnded does change to TRUE 
-								// when the end of the game is reached
-	}
-	
-/*
-	public void testUpperBound1{
-		upperBound = Main.upperBoundComputed();
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound1,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	public void testUpperBound2{
-		upperBound = Main.upperBoundComputed();
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound2,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-		
-	public void testUpperBound3{
-		upperBound = Main.upperBoundComputed();
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound3,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	public void testUpperBound4{
-		upperBound = Main.upperBoundComputed();
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound4,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	public void testUpperBound5{
-		upperBound = Main.upperBoundComputed();
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound5,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	public void testUpperBound6{
-		upperBound = Main.upperBoundComputed();
-		display.getUserInput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound6,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	public void testUpperBound7{
-		upperBound = Main.upperBoundComputed();
-		display.userinput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound7,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	public void testUpperBound8{
-		
-		display.userinput(testUserInput); //this assumes that the game is asking
-						// if the guess is larger or smaller than the user number
-		assertTrue(testUpperBound8,upperBound);
-				//this compares the initial calculated upperBound against the testUpperBound0
-				//to verify that they are the same value and that the calculations are correct
-	}
-	
-	
-
-
-	public void testUserNumberCompare{
-		assertTrue(testUserNumber, finalNumberGuessed);		// compares the programs final guess	
-								// with the user's number entered
-	}
-	
-	public void testReferenceVariable{
-		assertNotSame(testUserNumber, finalNumberGuessed); // compares the references of the two variables		
-								// to show that they are from separate references and that the game is not cheating
-	}
-*/
 }

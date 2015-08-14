@@ -74,9 +74,8 @@
         android:enabled="false"
         android:id="@+id/btnNumChosen"
         android:onClick="btnNumberChosen_OnClick"
-        android:layout_below="@+id/rbsPlayOptions"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="110dp" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"

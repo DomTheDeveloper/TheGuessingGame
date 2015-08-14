@@ -42,7 +42,8 @@ public class Core {
 											// guessed is higher, lower, or equal to the number he/she 
 	
 											// picked.
-	public Core(){}
+	public Core(){
+	}
 	public Core(boolean gameEnded, int upperBound, int calcBound, int maxGuesses, 
 		int guessedNumber, int prevGuess, int curGuess, String feedbackSel){
 		hasGameEnded = gameEnded;
@@ -140,17 +141,6 @@ public class Core {
 	public void setGuessFeedbackSelection(String selection) {
 		feedbackSelection = selection;
 	}
-	
-	/**
-	* Returns the feedbackSelection set for when the user indicates his/her
-	* chosen number is greater, equal, or lower than the number the System
-	* guessed.
-	* @return the value of "feedbackSelection" of type "String"
-	*/
-	public String setGuessFeedbackSelection() {
-		return feedbackSelection;
-	}
-	
 	/**
 	* Sets the value of the hasGameEnded variable based on the state
 	* of the game
