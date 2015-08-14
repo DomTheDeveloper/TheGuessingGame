@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.oakland.classProject.production.android.DisplayGuess">
+    tools:context="edu.oakland.classProject.production.android.MainActivity">
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" android:showAsAction="never" />
 </menu>
-<!-- From: file:/C:/Users/rkline.TREVA6/Documents/GitHub/TheGuessingGame/res/menu/menu_guess_screen.xml -->
+<!-- From: file:/C:/Users/Dominic/Documents/GitHub/TheGuessingGame/res/menu/menu_guess_screen.xml -->

@@ -17,7 +17,7 @@ ADDED from AndroidManifest.xml:7:5
 		ADDED from AndroidManifest.xml:9:9
 	android:icon
 		ADDED from AndroidManifest.xml:8:9
-activity#edu.oakland.classProject.production.android.DisplayStart
+activity#edu.oakland.classProject.production.android.MainActivity
 ADDED from AndroidManifest.xml:10:9
 	android:label
 		ADDED from AndroidManifest.xml:12:13
@@ -33,12 +33,6 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:16:17
 	android:name
 		ADDED from AndroidManifest.xml:16:27
-activity#edu.oakland.classProject.production.android.DisplayGuess
-ADDED from AndroidManifest.xml:19:9
-	android:label
-		ADDED from AndroidManifest.xml:21:13
-	android:name
-		ADDED from AndroidManifest.xml:20:13
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion

@@ -11,6 +11,8 @@
     <string name="guess_number_button">Guess My Number</string>
     <string name="title_activity_guess_screen">GuessScreen</string>
     <string name="max_num_of_guesses">The system will guess your number in %1$d guesses or fewer.</string>
+    <string name="current_guess">I guess %1$d.</string>
+    <string name="guess_iteration">Guess #%1$d</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

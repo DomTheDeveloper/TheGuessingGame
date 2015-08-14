@@ -12,17 +12,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name="edu.oakland.classProject.production.android.DisplayStart"
+            android:name="edu.oakland.classProject.production.android.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="edu.oakland.classProject.production.android.DisplayGuess"
-            android:label="@string/title_activity_guess_screen" >
         </activity>
     </application>
 

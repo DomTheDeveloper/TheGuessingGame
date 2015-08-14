@@ -34,6 +34,7 @@
         android:id="radioGroupId
 
         <RadioButton
+            android:onClick="rbOption_OnClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/basic_rb_text"
@@ -48,6 +49,7 @@
             android:visibility="gone"/>
 
         <RadioButton
+            android:onClick="rbOption_OnClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/advanced_rb_text"
@@ -80,7 +82,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/chosen_number_button"
+        android:enabled="false"
         android:id="@+id/btnNumChosen"
+        android:onClick="btnNumberChosen_OnClick"
         android:layout_below="@+id/rbsPlayOptions"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="110dp" />
@@ -99,6 +103,7 @@
         android:layout_height="wrap_content"
         android:text="@string/guess_number_button"
         android:id="@+id/btnGuess"
+        android:onClick="btnGuess_OnClick"
         android:layout_below="@+id/tvMaxNumOfGuesses"
         android:visibility="gone"
         android:layout_centerHorizontal="true" />
@@ -109,4 +114,4 @@
 
 </RelativeLayout>
 
-<!-- From: file:/C:/Users/rkline.TREVA6/Documents/GitHub/TheGuessingGame/res/layout/displaystart.xml -->
+<!-- From: file:/C:/Users/Dominic/Documents/GitHub/TheGuessingGame/res/layout/displaystart.xml -->

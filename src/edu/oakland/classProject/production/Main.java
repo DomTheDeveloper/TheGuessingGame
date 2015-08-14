@@ -2,8 +2,7 @@ package edu.oakland.classProject.production;
 
 public class Main{
 
-	private IDisplayStart displayStart;
-	private IDisplayGuess displayGuess;
+	private IDisplay display;
 
 	private Core core;
 	public static Main main;
@@ -13,32 +12,16 @@ public class Main{
 	public int currentGuessIteration;
 	public int currentGuess;
 
-	public static Main getInstance(){
-		return main;
-	}
-
     public Main(IDisplay _display) {
-        this();
-        setDisplayStart(_display);
-        setDisplayGuess(_display);
+		main = this;
+		display = _display;
+		core = new Core();
     }
-
-    public Main(){
-        main = this;
-        core = new Core();
-    }
-	public void setDisplayStart(IDisplayStart _displayStart) {
-		displayStart = _displayStart;
-	}
-
-	public void setDisplayGuess(IDisplayGuess _displayGuess) {
-		displayGuess = _displayGuess;
-	}
 	
 	public boolean startGame(){
 		core.reinitialize();
 		
-		char playSelection = displayStart.getPlaySelection();
+		char playSelection = display.getPlaySelection();
 		
 		switch (playSelection){
 			case 'Q':
@@ -47,7 +30,7 @@ public class Main{
 				/// keep default upperBoundInput
 				break;
 			case 'A': /// Advanced Play
-				int upperBoundSelection = displayStart.getUpperBoundSelection();
+				int upperBoundSelection = display.getUpperBoundSelection();
 				core.setUpperBoundInput(upperBoundSelection);
 				break;
 		}
@@ -55,7 +38,7 @@ public class Main{
 		upperBoundComputed = core.requestUpperBoundComputed();
 		maxNumOfGuesses = core.requestMaxNumGuesses();
 
-		displayStart.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
+		display.getUserConfirmation(upperBoundComputed, maxNumOfGuesses);
 
 		return true;
 	}
@@ -67,7 +50,7 @@ public class Main{
 		currentGuessIteration = core.computeGuessIteration();
 		currentGuess = core.computeGuess();
 
-		displayGuess.displayGuessInfo(currentGuess, currentGuessIteration);
+		display.displayGuessInfo(currentGuess, currentGuessIteration);
 		
 		return true;
 	}
@@ -76,7 +59,7 @@ public class Main{
 		currentGuessIteration = core.getGuessIteration();
 		currentGuess = core.getGuess();
 	
-		char guessFeedback = displayGuess.getGuessFeedback();
+		char guessFeedback = display.getGuessFeedback();
 		
 		switch (guessFeedback){
 			case '+': //"My number is higher"
@@ -92,6 +75,6 @@ public class Main{
 	}
 
 	public void endGame(){
-		displayGuess.getEndGameConfirmation(core.getGuess(), core.getGuessIteration());
+		display.getEndGameConfirmation(core.getGuess(), core.getGuessIteration());
 	}
 }

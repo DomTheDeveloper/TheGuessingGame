@@ -2,9 +2,7 @@ package edu.oakland.classProject.production.cmdLine;
 
 import java.util.*;
 import edu.oakland.classProject.production.IDisplay;
-
-import edu.oakland.classProject.production.IDisplayGuess;
-import edu.oakland.classProject.production.IDisplayStart;
+import edu.oakland.classProject.production.DisplayHelper;
 
 /**
 *This class holds the methods involved with displaying the command line interface.
@@ -133,30 +131,7 @@ public class Display implements IDisplay {
 		System.out.println();
 	}
 	
-	/* will return either int[] or int[][], based on dimensions input */
-	private Object generateUpperBoundOptions(int dimensions){
-		int numOfSelections = MAX_UPPERBOUND_OPTION-MIN_UPPERBOUND_OPTION;
-		
-		int[]   upperBoundOptions_1D = new int[numOfSelections+1];
-		int[][] upperBoundOptions_2D = new int[numOfSelections+1][2];
-		
-		for (int i = 0; i <= numOfSelections; i++){
-			int maxNumOfGuesses = i + MIN_UPPERBOUND_OPTION;
-			int upperBound = (int)Math.pow(2, maxNumOfGuesses) - 1;
-			
-			//1D
-			upperBoundOptions_1D[i] = upperBound;
-			
-			//2D
-			upperBoundOptions_2D[i][0] = maxNumOfGuesses;
-			upperBoundOptions_2D[i][1] = upperBound;
-			
-		}
-		if (dimensions == 1)
-			return upperBoundOptions_1D;
-		else /// if (dimensions == 2)
-			return upperBoundOptions_2D;
-	}
+
 	
 	/**
  	* Prints for user to enter an option for upper bound
@@ -165,7 +140,10 @@ public class Display implements IDisplay {
  	*/
 	private void displayRequestUpperBoundSelection(){
 		System.out.println("Please enter an option for your desired upper bound.");
-		int[][] upperBoundOptions = (int[][])generateUpperBoundOptions(2);
+
+		DisplayHelper displayHelper = new DisplayHelper(MIN_UPPERBOUND_OPTION, MAX_UPPERBOUND_OPTION);
+
+		int[][] upperBoundOptions = (int[][])displayHelper.generateUpperBoundOptions(2);
 		for (int[] option : upperBoundOptions){
 			int maxNumOfGuesses = option[0];
 			int upperBound      = option[1];
