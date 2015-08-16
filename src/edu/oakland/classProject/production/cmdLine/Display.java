@@ -65,11 +65,24 @@ public class Display implements IDisplay {
 		String lineToPrint = String.format("Guess #%d\nThe system has guessed %d.", currentGuessIteration, currentGuess);
 		System.out.println(lineToPrint);
 	}
-	public char getGuessFeedback(){	
-		char userFeedback = requestEnterGuessFeedback();
-		return userFeedback;
+	public String getGuessFeedback(){	
+		return formatGuessFeedback(requestEnterGuessFeedback());
 	}
-
+	public String formatGuessFeedback(char guessFeedback){
+		String formattedGuessFeedback = new String();
+		switch (guessFeedback){
+			case '+': //"My number is higher"
+				formattedGuessFeedback = "higher";
+				break;
+			case '-': //"My number is lower"
+				formattedGuessFeedback = "lower";
+				break;
+			case '=': //"My number is equal"
+				formattedGuessFeedback = "equal";
+				break;
+		}
+		return formattedGuessFeedback;
+	}
 	public void getEndGameConfirmation(int guess, int guessIteration){
 		System.out.println(String.format("The system has guessed your number, which is %d.", guess));
 		displayNumOfGuesses(guessIteration, true);

@@ -1,4 +1,4 @@
-package edu.oakland.classProject.test;
+package edu.oakland.classproject.test;
 
 import edu.oakland.classProject.production.*;
 import edu.oakland.classProject.production.cmdLine.*;

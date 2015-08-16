@@ -2,21 +2,19 @@ package edu.oakland.classProject.production.android;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.Arrays;
+import android.content.Intent;
 
 import edu.oakland.classProject.production.IDisplay;
 import edu.oakland.classProject.production.Main;
 import edu.oakland.classProject.production.DisplayHelper;
-
 
 
 public class MainActivity extends Activity implements IDisplay {
@@ -47,8 +45,7 @@ public class MainActivity extends Activity implements IDisplay {
     int MAX_UPPERBOUND_OPTION = 16;
     DisplayHelper displayHelper = new DisplayHelper(MIN_UPPERBOUND_OPTION, MAX_UPPERBOUND_OPTION);
     private int[] upperBoundSelection_int = (int[])displayHelper.generateUpperBoundOptions(1);
-    private Integer[] upperBoundSelection  = displayHelper.intArrayToIntegerArray(upperBoundSelection_int);
-
+    private Integer[] upperBoundSelection  = DisplayHelper.intArrayToIntegerArray(upperBoundSelection_int);
 
     private Button currentFeedbackButton;
 
@@ -117,16 +114,13 @@ public class MainActivity extends Activity implements IDisplay {
     }
 
     public int getUpperBoundSelection(){
-        int upperBoundSelection = sprAdvanced.getSelectedItemPosition() + MIN_UPPERBOUND_OPTION;
-        return upperBoundSelection;
+        return sprAdvanced.getSelectedItemPosition() + MIN_UPPERBOUND_OPTION;
     }
     public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses) {
         String strFormat = getResources().getString(R.string.max_num_of_guesses);
         String strMessage = String.format(strFormat, maxNumOfGuesses);
 
         tvMaxNumOfGuesses.setText(strMessage);
-
-        return;
     }
     public void displayGuessInfo(int currentGuess, int currentGuessIteration){
 
@@ -140,19 +134,36 @@ public class MainActivity extends Activity implements IDisplay {
         tvGuessIteration.setText(strGuessIterationMessage);
 
     }
-    public char getGuessFeedback(){
-        char guessFeedback = currentFeedbackButton.getTag().toString().charAt(0);
-        return guessFeedback;
+    public String getGuessFeedback(){
+        return currentFeedbackButton.getTag().toString();
     }
     public void getEndGameConfirmation(int guess, int guessIteration){
-        tvGameOver.setVisibility(View.VISIBLE);
-        btnHigher.setVisibility(View.INVISIBLE);
-        btnLower.setVisibility(View.INVISIBLE);
-        btnEquals.setVisibility(View.INVISIBLE);
+        // tvGameOver.setVisibility(View.VISIBLE);
+        String strCurrentGuessFormat = getResources().getString(R.string.final_guess);
+        String strCurrentGuessMessage = String.format(strCurrentGuessFormat, guess);
 
-        displayGuessInfo(guess, guessIteration);
+        String strGuessIterationFormat = getResources().getString(R.string.guess_iteration);
+        String strGuessIterationMessage = String.format(strGuessIterationFormat, guessIteration);
 
-        return;
+        tvGuess.setText(strCurrentGuessMessage);
+        tvGuessIteration.setText(strGuessIterationMessage);
+
+        btnHigher.setVisibility(View.GONE);
+        btnLower.setVisibility(View.GONE);
+        btnEquals.setVisibility(View.GONE);
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        }, 2500);
+
+
     }
 
     public void rbOption_OnClick(View view){

@@ -1,4 +1,4 @@
-package edu.oakland.classProject.production; // classProject be lowercase?
+package edu.oakland.classProject.production;
 
 /**
 * This class holds all of the core functionality of TheGuessingGame backend.
@@ -8,7 +8,7 @@ package edu.oakland.classProject.production; // classProject be lowercase?
 * picked, the upper bound (the highest number the user is allowed to pick), 
 * and performing a binomial in order to efficiently guess the number the user
 * picked.
-*@version version 1.0 150804
+*@version version 1.0 150815
 *@since version 1.0
 */
 
@@ -23,7 +23,7 @@ public class Core {
 	
 	private int calcUpperBound;		// Adjusts the upper bound so the user can pick
 											// a number from 1-1023.
-	private int maxNumGuesses; 		// The number of guesses the System is
+	private int maxNumOfGuesses = 10; 		// The number of guesses the System is
 											// allotted. If the System does not guess
 											// the number correctly in the guesses
 											// allotted to it, the System loses and
@@ -49,7 +49,7 @@ public class Core {
 		hasGameEnded = gameEnded;
 		inputUpperBound = upperBound;
 		calcUpperBound = calcBound;
-		maxNumGuesses = maxGuesses;
+		maxNumOfGuesses = maxGuesses;
 		numberGuessed = guessedNumber;
 		previousGuess = prevGuess;
 		currentGuess = curGuess;
@@ -72,20 +72,20 @@ public class Core {
 	* Computes the maximium number of guesses that the system will take to guess
 	* the user's number based on the upper bound
 	*/
-	private void computeMaxNumGuesses() {
-	    maxNumGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
+	private void computeMaxNumOfGuesses() {
+	    maxNumOfGuesses = (int)(Math.log(inputUpperBound)/Math.log(2));
 	}
 	
 	/**
 	* Returns the maximum number of guesses the System is 
-	* allowed to make. When the maxNumGuesses value is reached,
+	* allowed to make. When the maxNumOfGuesses value is reached,
 	* the user wins the game and the System loses.
-	*@return the value of "maxNumGuesses" of type "int".
-	*@see computeMaxNumGuesses
+	*@return the value of "maxNumOfGuesses" of type "int".
+	*@see computemaxNumOfGuesses
 	*/
-	public int requestMaxNumGuesses() {
-		computeMaxNumGuesses();
-	    return maxNumGuesses;
+	public int getMaxNumOfGuesses() {
+		computeMaxNumOfGuesses();
+	    return maxNumOfGuesses;
 	}
 	
 	/**
@@ -93,7 +93,8 @@ public class Core {
 	*the value of the system's next guess
 	*@return the value of "numberGuessed" op type "int"
 	*/
-	public int computeGuess() {
+	public void computeGuess() {
+		computeGuessIteration();
 		
 		if ( feedbackSelection.equalsIgnoreCase("higher")  ||
 			 feedbackSelection.equalsIgnoreCase("initial") ){
@@ -105,8 +106,15 @@ public class Core {
 							(inputUpperBound/Math.pow(2, currentGuess)));
 		}
 		previousGuess = numberGuessed;
-		return numberGuessed;
 	}
+	/**
+	* Iterates the guess counter when the System guesses a number.
+	*@return the value of "currentGuess" of type "int".
+	*/
+	private void computeGuessIteration() {
+		++currentGuess;
+	}
+	
 	
 	/**
 	* Returns the numberGuessed value
@@ -116,15 +124,7 @@ public class Core {
 		return numberGuessed;
 	}
 
-	/**
-	* Iterates the guess counter when the System guesses a number.
-	*@return the value of "currentGuess" of type "int".
-	*/
-	public int computeGuessIteration() {
-		++currentGuess;
-		return currentGuess;
-	}
-	
+
 	/**
 	* Returns value stored in the guess counter.
 	*@return the value of "currentGuess" of type "int".
@@ -149,8 +149,7 @@ public class Core {
 		if (feedbackSelection.equalsIgnoreCase("equal")) {
 			hasGameEnded = true;
 		}
-		else if ((currentGuess+1) >= maxNumGuesses) {
-			computeGuessIteration();
+		else if ((currentGuess+1) >= maxNumOfGuesses) {
 			computeGuess();
 			hasGameEnded = true;
 		}
@@ -165,7 +164,7 @@ public class Core {
 	* 				selects to end the game.
 	* @return the value of "hasGameEnded" of type "boolean"
 	*/
-	public boolean requestHasGameEnded() {
+	public boolean getHasGameEnded() {
 		computeHasGameEnded();
 		return hasGameEnded;
 	}
@@ -190,7 +189,7 @@ public class Core {
 	* @see computUpperBoundComputed
 	* @return the value of "calcUpperBound" of type "int"
 	*/
-	public int requestUpperBoundComputed() {
+	public int getUpperBoundComputed() {
 		computeUpperBoundComputed();
 		return calcUpperBound;
 	}

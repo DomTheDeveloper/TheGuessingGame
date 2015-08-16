@@ -39,7 +39,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="?android:attr/selectableItemBackground"
-        android:tag="+"
+        android:tag="higher"
         android:onClick="btnFeedback_OnClick"
         />
     <Button
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="="
-        android:tag="="
+        android:tag="equal"
         android:textSize="17dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
@@ -63,7 +63,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="?android:attr/selectableItemBackground"
-        android:tag="-"
+        android:tag="lower"
         android:onClick="btnFeedback_OnClick"
         />
 </LinearLayout>

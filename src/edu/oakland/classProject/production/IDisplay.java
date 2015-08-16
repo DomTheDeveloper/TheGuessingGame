@@ -5,6 +5,6 @@ public interface IDisplay{
     public int getUpperBoundSelection();
     public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses);
     public void displayGuessInfo(int currentGuess, int currentGuessIteration);
-    public char getGuessFeedback();
+    public String getGuessFeedback();
     public void getEndGameConfirmation(int guess, int guessIteration);
 }

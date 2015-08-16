@@ -53,11 +53,12 @@ public final class R {
         public static final int basic_rb_text=0x7f050006;
         public static final int chosen_number_button=0x7f050007;
         public static final int current_guess=0x7f050008;
-        public static final int guess_iteration=0x7f050009;
-        public static final int guess_number_button=0x7f05000a;
-        public static final int hello_world=0x7f05000b;
-        public static final int max_num_of_guesses=0x7f05000c;
-        public static final int spinner_prompt=0x7f05000d;
-        public static final int title_activity_guess_screen=0x7f05000e;
+        public static final int final_guess=0x7f050009;
+        public static final int guess_iteration=0x7f05000a;
+        public static final int guess_number_button=0x7f05000b;
+        public static final int hello_world=0x7f05000c;
+        public static final int max_num_of_guesses=0x7f05000d;
+        public static final int spinner_prompt=0x7f05000e;
+        public static final int title_activity_guess_screen=0x7f05000f;
     }
 }

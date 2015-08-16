@@ -46,7 +46,7 @@ public class DisplayHelper {
             return upperBoundOptions_2D;
     }
 
-    public Integer[] intArrayToIntegerArray(int[] oldArray){
+    public static Integer[] intArrayToIntegerArray(int[] oldArray){
 
         Integer[] newArray = new Integer[oldArray.length];
         int i = 0;

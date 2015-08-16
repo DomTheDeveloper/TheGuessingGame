@@ -1,12 +1,12 @@
 package edu.oakland.classProject.test;
 
 import edu.oakland.classProject.production.Core;
-import java.util.Arrays.*;
+
 import junit.framework.*;
 /**
 * This class holds all of the JUnit test cases for testing the Core class.
 * CoreTest.java
-* @version: v1.0 20150814
+* @version: v1.0 20150815
 */
 public class CoreTest extends TestCase{
 	/*
@@ -28,46 +28,43 @@ public class CoreTest extends TestCase{
 	private final int testUpperBoundInput = 10;
 	private final int testUpperBoundComputed = 1023;
 	
-	public void testComputeMaxNumGuessesBasic(){
+	public void testComputeMaxNumOfGuessesBasic(){
 		Core core = new Core();
-		int maxNumOfGuesses = core.requestMaxNumGuesses();
-		assertEquals(maxNumOfGuesses,testMaxNumOfGuessesBasic);		
+		assertEquals(testMaxNumOfGuessesBasic,core.getMaxNumOfGuesses());		
 	}
-	public void testComputeMaxNumGuessesAdvanced(){
+	public void testComputeMaxNumOfGuessesAdvanced(){
 		Core core = new Core();
 		core.setUpperBoundInput(testMaxNumOfGuessesAdvanced);
-		int maxNumOfGuesses = core.requestMaxNumGuesses();
-		assertEquals(maxNumOfGuesses,testMaxNumOfGuessesAdvanced);		
+		int maxNumOfGuesses = core.getMaxNumOfGuesses();
+		assertEquals(testMaxNumOfGuessesAdvanced,maxNumOfGuesses);		
 	}
 	public void testComputeInitialGuess(){
 		Core core = new Core();
-		core.computeGuessIteration();
-		int numberGuessed = core.computeGuess();
+		core.computeGuess();
+		int numberGuessed = core.getGuess();
 		assertEquals(testInitialGuess,numberGuessed);
 	}	
 	public void testComputeSubsequentGuess_Higher(){
 		Core core = new Core();
-		core.computeGuessIteration();
 		core.computeGuess();
 		core.setGuessFeedbackSelection("higher");
-		core.computeGuessIteration();
-		int numberGuessed = core.computeGuess();
+		core.computeGuess();
+		int numberGuessed = core.getGuess();
 		assertEquals(testSubsequentGuess_Higher,numberGuessed);
 	}
 	public void testComputeSubsequentGuess_Lower(){
 		Core core = new Core();
-		core.computeGuessIteration();
 		core.computeGuess();
 		core.setGuessFeedbackSelection("lower");
-		core.computeGuessIteration();
-		int numberGuessed = core.computeGuess();
+		core.computeGuess();
+		int numberGuessed = core.getGuess();
 		assertEquals(testSubsequentGuess_Lower,numberGuessed);
 	}
 	public void testGuessIteration(){
 		Core core = new Core();
 		
 		for (int i=0; i < testGuessIterations; i++){
-			core.computeGuessIteration();
+			core.computeGuess();
 		}
 		
 		int guessIteration = core.getGuessIteration();
@@ -75,35 +72,30 @@ public class CoreTest extends TestCase{
 	}
 	public void testHasGameEnded_False(){
 		Core core = new Core();
-		core.requestMaxNumGuesses();
-		core.computeGuessIteration();
 		core.computeGuess();
-		boolean hasGameEnded = core.requestHasGameEnded();
+		boolean hasGameEnded = core.getHasGameEnded();
 		assertFalse(hasGameEnded);
 	}
 	public void testHasGameEnded_Equal(){
 		Core core = new Core();
-		core.requestMaxNumGuesses();
-		core.computeGuessIteration();
 		core.computeGuess();
 		core.setGuessFeedbackSelection("equal");
-		boolean hasGameEnded = core.requestHasGameEnded();
+		boolean hasGameEnded = core.getHasGameEnded();
 		assertTrue(hasGameEnded);
 	}
 	public void testHasGameEnded_MaxNumOfGuessesExceeded(){
 		Core core = new Core();
 		core.setUpperBoundInput(1);
-		core.requestMaxNumGuesses();
-		core.computeGuessIteration();
+		core.getMaxNumOfGuesses();
 		core.computeGuess();
 		core.setGuessFeedbackSelection("equal");
-		boolean hasGameEnded = core.requestHasGameEnded();
+		boolean hasGameEnded = core.getHasGameEnded();
 		assertTrue(hasGameEnded);
 	}
-	public void testRequestUpperBoundComputed(){
+	public void testGetUpperBoundComputed(){
 		Core core = new Core();
 		core.setUpperBoundInput(testUpperBoundInput);
-		int upperBoundComputed = core.requestUpperBoundComputed();
+		int upperBoundComputed = core.getUpperBoundComputed();
 		assertEquals(testUpperBoundComputed, upperBoundComputed);
 	}
 }
