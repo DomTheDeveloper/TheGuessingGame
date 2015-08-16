@@ -81,7 +81,7 @@ public class Core implements ICore {
 	* allowed to make. When the maxNumOfGuesses value is reached,
 	* the user wins the game and the System loses.
 	*@return the value of "maxNumOfGuesses" of type "int".
-	*@see computemaxNumOfGuesses
+	*@see computeMaxNumOfGuesses
 	*/
 	public int getMaxNumOfGuesses() {
 		computeMaxNumOfGuesses();
@@ -91,7 +91,6 @@ public class Core implements ICore {
 	/**
 	*Uses the value set by setGuessFeedbackSelection to calcuate
 	*the value of the system's next guess
-	*@return the value of "numberGuessed" of type "int"
 	*/
 	public void computeGuess() {
 		computeGuessIteration();
@@ -160,8 +159,6 @@ public class Core implements ICore {
 	
 	/**
 	* This boolean method tests to see if the game actually ended and returns the result.
-	* @param computeHasGameEnded	validates with Main to determine if the user
-	* 				selects to end the game.
 	* @return the value of "hasGameEnded" of type "boolean"
 	*/
 	public boolean getHasGameEnded() {
@@ -186,7 +183,7 @@ public class Core implements ICore {
 	
 	/**
 	* This method calls for the requested Upper Bound and returns the computed uppper bound.
-	* @see computUpperBoundComputed
+	* @see computeUpperBoundComputed
 	* @return the value of "calcUpperBound" of type "int"
 	*/
 	public int getUpperBoundComputed() {

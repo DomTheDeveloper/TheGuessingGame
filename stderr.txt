@@ -1,0 +1,27 @@
+src\edu\oakland\classProject\production\Main.java:6: warning: no description for @author
+*@author 
+ ^
+src\edu\oakland\classProject\production\Main.java:17: warning: no @param for _display
+	public Main(IDisplay _display) {
+	       ^
+src\edu\oakland\classProject\production\Main.java:24: warning: no @param for _display
+	public Main(IDisplay _display, ICore _core) {
+	       ^
+src\edu\oakland\classProject\production\Main.java:24: warning: no @param for _core
+	public Main(IDisplay _display, ICore _core) {
+	       ^
+src\edu\oakland\classProject\test\AutomatedDisplay.java:7: warning: no description for @author
+*@author
+ ^
+src\edu\oakland\classProject\test\AutomatedTest.java:9: warning: no description for @author
+*@author
+ ^
+src\edu\oakland\classProject\test\EndToEndTest.java:9: warning: no description for @author
+*@author
+ ^
+src\edu\oakland\classProject\test\MockCore.java:7: warning: no description for @author
+*@author
+ ^
+src\edu\oakland\classProject\test\MockDisplay.java:7: warning: no description for @author
+*@author
+ ^

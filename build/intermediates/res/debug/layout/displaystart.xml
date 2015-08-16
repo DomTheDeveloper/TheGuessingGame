@@ -83,6 +83,7 @@
         android:text="@string/max_num_of_guesses"
         android:layout_below="@+id/btnNumChosen"
         android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/tvMaxNumOfGuesses"
         android:visibility="gone"/>
 
@@ -103,4 +104,4 @@
 
 </RelativeLayout>
 
-<!-- From: file:/C:/Users/Dominic/Documents/GitHub/TheGuessingGame/res/layout/displaystart.xml -->
+<!-- From: file:/C:/Users/Administrator/school/337/git/TheGuessingGame/res/layout/displaystart.xml -->

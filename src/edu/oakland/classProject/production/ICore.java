@@ -47,7 +47,7 @@ public interface ICore {
     public int getGuessIteration();
     /**
      * A setter for the current user feedback
-     * @param guessFeedBackSelection the feedback given by the display telling Core wheter the user said their guess was higher or lower
+     * @param guessFeedbackSelection the feedback given by the display telling Core wheter the user said their guess was higher or lower
      */
     public void setGuessFeedbackSelection(String guessFeedbackSelection);
 }

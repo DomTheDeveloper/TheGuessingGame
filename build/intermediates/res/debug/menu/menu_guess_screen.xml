@@ -4,4 +4,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" android:showAsAction="never" />
 </menu>
-<!-- From: file:/C:/Users/Dominic/Documents/GitHub/TheGuessingGame/res/menu/menu_guess_screen.xml -->
+<!-- From: file:/C:/Users/Administrator/school/337/git/TheGuessingGame/res/menu/menu_guess_screen.xml -->
