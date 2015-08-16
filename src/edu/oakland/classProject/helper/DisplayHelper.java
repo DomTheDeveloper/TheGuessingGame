@@ -1,27 +1,50 @@
 package edu.oakland.classProject.helper;
 
+/**
+*This class deals with the array containing the upperbound and number of guesses. 
+*Takes oldArray and generates upperBoundOptions based on passed dimensions.
+*@author JavaAppTeam
+*@version version2.0
+*@since version1.0
+*/
 public class DisplayHelper {
-
+	
     int MIN_UPPERBOUND_OPTION = 1;
     int MAX_UPPERBOUND_OPTION = 16;
 
+	/**
+	* overloaded constructor that passes an over-riding value into MIN_UPPERBOUND_OPTION and MAX_UPPERBOUND_OPTION
+	*/
     public DisplayHelper(int _MIN_UPPERBOUND_OPTION, int _MAX_UPPERBOUND_OPTION){
         MIN_UPPERBOUND_OPTION = _MIN_UPPERBOUND_OPTION;
         MAX_UPPERBOUND_OPTION = _MAX_UPPERBOUND_OPTION;
     }
-
+	
+	/**
+	* Empty method.
+	*/
     public DisplayHelper(){
     }
 
+	/**
+	* Method to set the MIN_UPPERBOUND_OPTION
+	*/
     public void setMIN_UPPERBOUND_OPTION(int _MIN_UPPERBOUND_OPTION){
         MIN_UPPERBOUND_OPTION = _MIN_UPPERBOUND_OPTION;
     }
 
+	/**
+	* Method to set the MAX_UPPERBOUND_OPTION
+	*/
     public void setMAX_UPPERBOUND_OPTION(int _MAX_UPPERBOUND_OPTION){
         MAX_UPPERBOUND_OPTION = _MAX_UPPERBOUND_OPTION;
     }
 
-    /* will return either int[] or int[][], based on dimensions input */
+	/**
+	* Method will generated the upperBound options from the dimensions passed to the method.
+	* Will return either int[] or int[][], based on dimensions input.
+	@return upperBoundOptions_1D or upperBoundOptions_2D
+	*/
     public Object generateUpperBoundOptions(int dimensions){
         int numOfSelections = MAX_UPPERBOUND_OPTION-MIN_UPPERBOUND_OPTION;
 
@@ -46,6 +69,10 @@ public class DisplayHelper {
             return upperBoundOptions_2D;
     }
 
+	/**
+	* Method will take a passed in array, create a newArray and update the values based on the oldArray
+	@return newArray built from oldArray
+	*/
     public static Integer[] intArrayToIntegerArray(int[] oldArray){
 
         Integer[] newArray = new Integer[oldArray.length];
