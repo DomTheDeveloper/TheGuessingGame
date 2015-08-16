@@ -14,7 +14,7 @@ import android.content.Intent;
 
 import edu.oakland.classProject.production.IDisplay;
 import edu.oakland.classProject.production.Main;
-import edu.oakland.classProject.production.DisplayHelper;
+import edu.oakland.classProject.helper.DisplayHelper;
 
 
 public class MainActivity extends Activity implements IDisplay {

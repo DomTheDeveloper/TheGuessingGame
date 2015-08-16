@@ -9,6 +9,12 @@ public class Main{
 		display = _display;
 		core = new Core();
     }
+    ///Testing:
+    public Main(IDisplay _display, ICore _core) {
+        display = _display;
+        core = _core;
+    }
+
 	public boolean startGame(){
 		core.reinitialize();
 		

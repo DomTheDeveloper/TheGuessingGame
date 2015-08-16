@@ -2,7 +2,7 @@ package edu.oakland.classProject.production.cmdLine;
 
 import java.util.*;
 import edu.oakland.classProject.production.IDisplay;
-import edu.oakland.classProject.production.DisplayHelper;
+import edu.oakland.classProject.helper.DisplayHelper;
 
 /**
 *This class holds the methods involved with displaying the command line interface.
