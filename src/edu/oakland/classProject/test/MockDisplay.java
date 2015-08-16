@@ -2,6 +2,12 @@ package edu.oakland.classProject.test;
 
 import edu.oakland.classProject.production.IDisplay;
 
+/**
+* This class implements the IDisplay interface for testing with Main and Core.
+*@author
+*@version 1.0 150816
+*@since 1.0 150816
+*/
 public class MockDisplay implements IDisplay {
 
     private char playSelection;

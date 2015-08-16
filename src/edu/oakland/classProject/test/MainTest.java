@@ -5,7 +5,7 @@ import edu.oakland.classProject.production.cmdLine.*;
 import java.util.Arrays.*;
 import junit.framework.*;
 /**
-* This class holds all of the JUnit test cases for testing the Core class.
+* This class holds all of the JUnit test cases for testing the Main class using mock Display and Core classes.
 * @version: v1.0 20150816
 */
 
@@ -35,6 +35,9 @@ public class MainTest extends TestCase{
 
 	private String guessFeedback = "lower";
 
+	/**
+	* Tests if startGame() with a user input of simple properly initializes values in core, and computes the upper range and max number of guesses.
+	*/
 	public void testStartGame_Simple(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('S');
@@ -51,6 +54,9 @@ public class MainTest extends TestCase{
 
 		assertTrue(core.isReinitialized());
 	}
+	/**
+	* Tests if startGame() with a user input of advanced properly initializes values in core, and computes the upper range and max number of guesses.
+	*/
 	public void testStartGame_Advanced(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('A');
@@ -69,6 +75,9 @@ public class MainTest extends TestCase{
 		assertTrue(core.isReinitialized());
 		assertEquals(core.getUpperBoundInput(), display.getUpperBoundSelection());
 	}
+	/**
+	* Tests if startGame() returns false when given a user input of quit.
+	*/
 	public void testQuit(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('Q');
@@ -81,6 +90,9 @@ public class MainTest extends TestCase{
 
 		assertTrue(core.isReinitialized());
 	}
+	/**
+	* Tests if makeGuess() returns false when a guess should not be made
+	*/
 	public void testMakeGuess_GuessNotMade(){
 		MockDisplay display = new MockDisplay();
 
@@ -91,6 +103,9 @@ public class MainTest extends TestCase{
 
 		assertFalse(main.makeGuess());
 	}
+	/**
+	* Tests if makeGuess() calculates the correct values for the initial guess and initial guess iteration and returns false
+	*/
 	public void testMakeGuess_InitialGuess(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('S');
@@ -108,6 +123,9 @@ public class MainTest extends TestCase{
 		assertEquals(initialGuess,display.getCurrentGuess());
 		assertEquals(initialGuessIteration,display.getCurrentGuessIteration());
 	}
+	/**
+	* Tests if makeGuess() is able to properly make subsequent guesses
+	*/
 	public void testMakeGuess_SubsequentGuess(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('S');
@@ -128,6 +146,9 @@ public class MainTest extends TestCase{
 		assertEquals(subsequentGuess,display.getCurrentGuess());
 		assertEquals(subsequentGuessIteration,display.getCurrentGuessIteration());
 	}
+	/**
+	* Tests if endGame() displays the correct end guess and end guess iteration values when the game has ended
+	*/
 	public void testEndGame(){
 		MockDisplay display = new MockDisplay();
 

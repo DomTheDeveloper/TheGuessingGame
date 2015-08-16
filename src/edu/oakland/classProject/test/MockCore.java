@@ -2,6 +2,12 @@ package edu.oakland.classProject.test;
 
 import edu.oakland.classProject.production.ICore;
 
+/**
+* This class implements the ICore interface for use in testing with Main
+*@author
+*@version 1.0 150816
+*@since 1.0 150816
+*/
 public class MockCore implements ICore {
     int upperBoundInput;
     int upperBoundComputed;

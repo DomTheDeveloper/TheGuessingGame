@@ -28,22 +28,37 @@ public class DisplayHelperTest extends TestCase{
 	private final int[] testUpperBoundSelection_int = 
 		{7, 15, 31, 63};
 	
+	/**
+	* Tests if generateUpperBoundOptions helper returns the correct upper bound options by default
+	*/	
 	public void testGenerateUpperBoundOptions_d1(){
 		DisplayHelper displayHelper = new DisplayHelper();
 		assertTrue(Arrays.equals(testUpperBoundSelection_d1,(int[])(displayHelper.generateUpperBoundOptions(1))));		
 	}
+	/**
+	* Tests if generateUpperBoundOptions returns the correct upper bound options with a set max upper bound
+	*/
 	public void testGenerateUpperBoundOptions_d1_overloaded(){
 		DisplayHelper displayHelper = new DisplayHelper(MIN_UPPERBOUND_OPTION, MAX_UPPERBOUND_OPTION);
 		assertTrue(Arrays.equals(testUpperBoundSelection_d1_overloaded,(int[])(displayHelper.generateUpperBoundOptions(1))));		
 	}
+	/**
+	* Tests if generateUpperBoundOptions returns the correct upper bound options paired with option numbers
+	*/
 	public void testGenerateUpperBoundOptions_d2(){
 		DisplayHelper displayHelper = new DisplayHelper();
 		assertTrue(Arrays.deepEquals(testUpperBoundSelection_d2,(int[][])(displayHelper.generateUpperBoundOptions(2))));		
 	}
+	/**
+	* Tests if generateUpperBoundOptions returns the currect upper bound options paired with option numbers with a set max upper bound
+	*/
 	public void testGenerateUpperBoundOptions_d2_overloaded(){
 		DisplayHelper displayHelper = new DisplayHelper(MIN_UPPERBOUND_OPTION, MAX_UPPERBOUND_OPTION);
 		assertTrue(Arrays.deepEquals(testUpperBoundSelection_d2_overloaded,(int[][])(displayHelper.generateUpperBoundOptions(2))));		
 	}
+	/**
+	* Tests if intArrayToIntergerArray converts as expected
+	*/
 	public void testIntArrayToIntegerArray(){
 		assertTrue(Arrays.equals(testUpperBoundSelection_Integer,DisplayHelper.intArrayToIntegerArray(testUpperBoundSelection_int)));
 	}
