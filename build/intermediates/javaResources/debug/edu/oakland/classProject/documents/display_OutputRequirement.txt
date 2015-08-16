@@ -1,0 +1,50 @@
+/**
+* Output requirements for display team
+* @created DD_150728_1530
+* @edited  DD_150728_1700
+*/
+
+Welcome to The Guessing Game!
+----------------------------------------
+Select an option:
+[P]: Play
+[Q]: Quit
+>* P
+----------------------------------------
+Enter the upper bound integer (inclusive). [1-upperBound]
+upperBound: >* 1023
+----------------------------------------
+The device will find the correct number in {maxNumOfGuesses} guesses or less.
+
+Select a number between 1 and {upperBound}.
+DO NOT COMMUNICATE THE NUMBER CHOSEN TO THE DEVICE IN ANY WAY.
+
+Press the enter key once you have selected a number between 1 and {upperBound}.
+>* [ENTER]
+----------------------------------------
+Guess #{currentGuessIteration}
+The system has guessed {currentGuess}.
+
+Select an option:
+[+]: My number is higher
+[-]: My number is lower
+[=]: My number is equal
+>* +
+----------------------------------------
+Guess #{currentGuessIteration}
+The system has guessed {currentGuess}.
+
+Select an option:
+[+]: My number is higher
+[-]: My number is lower
+[=]: My number is equal
+>* =
+----------------------------------------
+The system has guessed your number, which is {currentGuess}.
+The device found the correct number in {currentGuessIteration} guesses.
+
+Select an option:
+[P]: Play
+[Q]: Quit
+>* Q
+----------------------------------------
