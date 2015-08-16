@@ -1,4 +1,4 @@
-@javac -d bin -sourcepath src src\edu\oakland\classproject\production\cmdLine\RunProgram.java
-@java -cp bin edu.oakland.classproject.production.cmdLine.RunProgram
+@javac -d bin -sourcepath src src\edu\oakland\classProject\production\cmdLine\RunProgram.java
+@java -cp bin edu.oakland.classProject.production.cmdLine.RunProgram
 
 @pause
