@@ -73,7 +73,11 @@ public class MainActivity extends Activity implements IDisplay {
 
 	}
 
-
+    /**
+     * Disables radio buttons and dropdown menu,
+     * displays textview saying how many guesses the system gets, and
+     * displays the button to start the game
+     * @param view Takes the button that is pressed of type View*/
     public void btnNumberChosen_OnClick(View view){
         main.startGame();
 
@@ -86,7 +90,10 @@ public class MainActivity extends Activity implements IDisplay {
         tvMaxNumOfGuesses.setVisibility(View.VISIBLE);
     }
 
-
+    /**
+     * Displays the Game Screen, calls  btnFeedback_OnClick method
+     * @param view Takes the button that is pressed of type View
+     * */
     public void btnGuess_OnClick(View view){
         setContentView(R.layout.displayguess);
 
@@ -101,7 +108,10 @@ public class MainActivity extends Activity implements IDisplay {
         btnFeedback_OnClick(view);
     }
 
-    /**Gets whether Basic or Advanced is selected*/
+    /**
+     * Gets whether Basic or Advanced is selected
+     * @return Returns a variable of type char that resembles the user's game type selected
+     * */
     public char getPlaySelection() {
         int rbId = rbsPlayOptions.getCheckedRadioButtonId();
         RadioButton rb = (RadioButton) findViewById(rbId);
@@ -113,9 +123,19 @@ public class MainActivity extends Activity implements IDisplay {
         }
     }
 
+    /**
+     * Gets the upper bound that's selected
+     * @return The upper bound selected of type int
+     *  */
     public int getUpperBoundSelection(){
         return sprAdvanced.getSelectedItemPosition() + MIN_UPPERBOUND_OPTION;
     }
+
+    /**
+     *  Displays how many guesses the system has to guess the user's number
+     *  @param upperBoundComputed The upper bound selected
+     *  @param maxNumOfGuesses The number of guesses the system has, given the upper bound
+     *  */
     public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses) {
         String strFormat = getResources().getString(R.string.max_num_of_guesses);
         String strMessage = String.format(strFormat, maxNumOfGuesses);
