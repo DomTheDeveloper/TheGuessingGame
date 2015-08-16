@@ -142,6 +142,11 @@ public class MainActivity extends Activity implements IDisplay {
 
         tvMaxNumOfGuesses.setText(strMessage);
     }
+    /**
+    * Displays the currentGuess and currentGuessIteration to the user
+    *@param currentGuess The system's current guess of type "int"
+    *@param currentGuessIteration The system's current guess number of type "int"
+    */
     public void displayGuessInfo(int currentGuess, int currentGuessIteration){
 
         String strCurrentGuessFormat = getResources().getString(R.string.current_guess);
@@ -154,9 +159,18 @@ public class MainActivity extends Activity implements IDisplay {
         tvGuessIteration.setText(strGuessIterationMessage);
 
     }
+    /**
+    * Gets the status of the feedback button and returns it
+    * @return the value of "currentFeedbackButton.getTag().toString()" of type String
+    */
     public String getGuessFeedback(){
         return currentFeedbackButton.getTag().toString();
     }
+    /**
+    * Displays the end game screen to the user with the end guess and guessIteration
+    * @param guess The system's current guess of type "int"
+    * @param guessIteration The system's current guess number of type "int"
+    */
     public void getEndGameConfirmation(int guess, int guessIteration){
         // tvGameOver.setVisibility(View.VISIBLE);
         String strCurrentGuessFormat = getResources().getString(R.string.final_guess);
@@ -185,7 +199,10 @@ public class MainActivity extends Activity implements IDisplay {
 
 
     }
-
+    /**
+    * Handles the click events on the radio buttons showing the basic and advanced game type selections
+    * @param view The radio button that was clicked of type "View"
+    */
     public void rbOption_OnClick(View view){
         if (rbBasic.isChecked()){
             tvBasic.setVisibility(View.VISIBLE);
@@ -199,7 +216,11 @@ public class MainActivity extends Activity implements IDisplay {
         }
         btnNumChosen.setEnabled(true);
     }
-
+    /**
+    * Called when the user gives their feedback on a guess
+    * Handles logic for when to call giveFeedback() and endGame() in Main
+    * @param view The button that was pressed of type "View"
+    */
     public void btnFeedback_OnClick(View view){
         currentFeedbackButton = (Button)view;
 
