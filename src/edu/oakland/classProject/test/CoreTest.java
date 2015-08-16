@@ -27,23 +27,35 @@ public class CoreTest extends TestCase{
 	private final int testSubsequentGuess_Lower = 256;
 	private final int testUpperBoundInput = 10;
 	private final int testUpperBoundComputed = 1023;
-	
+
+	/**
+	* Tests if getMaxNumOfGuesses() returns the correct default number of guesses
+	*/	
 	public void testComputeMaxNumOfGuessesBasic(){
 		Core core = new Core();
 		assertEquals(testMaxNumOfGuessesBasic,core.getMaxNumOfGuesses());		
 	}
+	/**
+	* Tests if getMaxNumOfGuesses() returns the correct number of guesses given a user defined upper bound
+	*/
 	public void testComputeMaxNumOfGuessesAdvanced(){
 		Core core = new Core();
 		core.setUpperBoundInput(testMaxNumOfGuessesAdvanced);
 		int maxNumOfGuesses = core.getMaxNumOfGuesses();
 		assertEquals(testMaxNumOfGuessesAdvanced,maxNumOfGuesses);		
 	}
+	/**
+	* Tests if the initial guess is calcuated as expected
+	*/
 	public void testComputeInitialGuess(){
 		Core core = new Core();
 		core.computeGuess();
 		int numberGuessed = core.getGuess();
 		assertEquals(testInitialGuess,numberGuessed);
-	}	
+	}
+	/**
+	* Tests if the subsequent guess given a user input of higher is calculated as expected
+	*/
 	public void testComputeSubsequentGuess_Higher(){
 		Core core = new Core();
 		core.computeGuess();
@@ -52,6 +64,9 @@ public class CoreTest extends TestCase{
 		int numberGuessed = core.getGuess();
 		assertEquals(testSubsequentGuess_Higher,numberGuessed);
 	}
+	/**
+	* Tests if the subsequent guess given a user input of lower is calculated as expected
+	*/
 	public void testComputeSubsequentGuess_Lower(){
 		Core core = new Core();
 		core.computeGuess();
@@ -60,6 +75,9 @@ public class CoreTest extends TestCase{
 		int numberGuessed = core.getGuess();
 		assertEquals(testSubsequentGuess_Lower,numberGuessed);
 	}
+	/**
+	* Tests if the guessIteration is properly iterated after computing a guess
+	*/
 	public void testGuessIteration(){
 		Core core = new Core();
 		
@@ -70,12 +88,18 @@ public class CoreTest extends TestCase{
 		int guessIteration = core.getGuessIteration();
 		assertEquals(testGuessIterations,guessIteration);
 	}
+	/**
+	* Tests if getHasGameEnded() returns false when the game has not ended
+	*/
 	public void testHasGameEnded_False(){
 		Core core = new Core();
 		core.computeGuess();
 		boolean hasGameEnded = core.getHasGameEnded();
 		assertFalse(hasGameEnded);
 	}
+	/**
+	* Tests if getHasGameEnded() returns true if the user gives a feeback selection of equal
+	*/
 	public void testHasGameEnded_Equal(){
 		Core core = new Core();
 		core.computeGuess();
@@ -83,6 +107,9 @@ public class CoreTest extends TestCase{
 		boolean hasGameEnded = core.getHasGameEnded();
 		assertTrue(hasGameEnded);
 	}
+	/**
+	* Tests if getHasGameEnded() returns true if the max number of guesses has been reached
+	*/
 	public void testHasGameEnded_MaxNumOfGuessesExceeded(){
 		Core core = new Core();
 		core.setUpperBoundInput(1);
@@ -92,6 +119,9 @@ public class CoreTest extends TestCase{
 		boolean hasGameEnded = core.getHasGameEnded();
 		assertTrue(hasGameEnded);
 	}
+	/**
+	* Tests if getUpperBoundComputed() returns the expected computed upper bound
+	*/
 	public void testGetUpperBoundComputed(){
 		Core core = new Core();
 		core.setUpperBoundInput(testUpperBoundInput);

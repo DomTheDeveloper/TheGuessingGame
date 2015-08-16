@@ -1,4 +1,4 @@
-package edu.oakland.classProject.production.cmdLine;
+package edu.oakland.cmdLine;
 
 import java.util.*;
 import edu.oakland.classProject.production.IDisplay;

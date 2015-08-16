@@ -1,6 +1,7 @@
-package edu.oakland.classProject.production.cmdLine;
+package edu.oakland.cmdLine;
 
 import edu.oakland.classProject.production.Main;
+import edu.oakland.cmdLine.Display;
 
 public class RunProgram{
 	

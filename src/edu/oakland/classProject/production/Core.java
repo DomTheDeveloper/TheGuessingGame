@@ -91,7 +91,7 @@ public class Core implements ICore {
 	/**
 	*Uses the value set by setGuessFeedbackSelection to calcuate
 	*the value of the system's next guess
-	*@return the value of "numberGuessed" op type "int"
+	*@return the value of "numberGuessed" of type "int"
 	*/
 	public void computeGuess() {
 		computeGuessIteration();
