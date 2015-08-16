@@ -3,7 +3,7 @@ package edu.oakland.classProject.production;
 public class Main{
 
 	private IDisplay display;
-	private Core core;
+	private ICore core;
 	
     public Main(IDisplay _display) {
 		display = _display;

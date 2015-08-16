@@ -1,10 +1,10 @@
 package edu.oakland.classProject.production;
 
 public interface IDisplay{
-    public char getPlaySelection();
-    public int getUpperBoundSelection();
-    public void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses);
-    public void displayGuessInfo(int currentGuess, int currentGuessIteration);
-    public String getGuessFeedback();
-    public void getEndGameConfirmation(int guess, int guessIteration);
+    char getPlaySelection();
+    int getUpperBoundSelection();
+    void getUserConfirmation(int upperBoundComputed, int maxNumOfGuesses);
+    void displayGuessInfo(int currentGuess, int currentGuessIteration);
+    String getGuessFeedback();
+    void getEndGameConfirmation(int guess, int guessIteration);
 }

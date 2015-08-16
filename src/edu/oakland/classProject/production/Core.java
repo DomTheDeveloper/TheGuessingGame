@@ -12,7 +12,7 @@ package edu.oakland.classProject.production;
 *@since version 1.0
 */
 
-public class Core {
+public class Core implements ICore {
 
 	private boolean hasGameEnded = false;// Flag for if a condition was encountered
 											// that signifies the end of the game.
