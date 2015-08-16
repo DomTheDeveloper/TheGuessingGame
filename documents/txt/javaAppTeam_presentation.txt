@@ -1,0 +1,13 @@
+3, 4: 	DD Dominic Dabish
+5, 6:	RW Renne Wise
+7:	DC David Chong
+8:	KM Kevin Macek
+9:	WY Waseem Yousif
+10: 	GK Greg Kabacinski
+11:	CL Casey Letarte
+12,13:	GK Greg Kabacinski
+14: 	NS Najuka Sakpal
+15. 	AT Ashley Taylor
+16. 	BT Bartlomiej Tokarz
+17. 	DD Dominic Dabish
+
