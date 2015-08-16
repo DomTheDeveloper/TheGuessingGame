@@ -42,7 +42,7 @@ public class DisplayHelper {
 
 	/**
 	* Method will generated the upperBound options from the dimensions passed to the method.
-    * Will return either int[] or int[][], based on dimensions input.
+	* Will return either int[] or int[][], based on dimensions input.
 	@return upperBoundOptions_1D or upperBoundOptions_2D
 	*/
     public Object generateUpperBoundOptions(int dimensions){
