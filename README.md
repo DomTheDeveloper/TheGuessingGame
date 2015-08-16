@@ -24,4 +24,5 @@ Extra Credit:
 - A means for the user to set the upper bound
 - Use binomial theorem to log base 2 to determine number of guesses, round up to whole number if log is a decimal
  
-
+# Javadocs
+http://cit-cse-337-summer-2015.github.io/TheGuessingGame/
