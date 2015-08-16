@@ -28,4 +28,4 @@ Extra Credit:
 http://cit-cse-337-summer-2015.github.io/TheGuessingGame/
 
 # Presentation
-https://docs.google.com/a/oakland.edu/presentation/d/1g8itabDIH__EbUkqzAHWQnEOrx0TsDYNr29Bfaakx50/edit?usp=sharing
+(Presentation)[https://docs.google.com/a/oakland.edu/presentation/d/1g8itabDIH__EbUkqzAHWQnEOrx0TsDYNr29Bfaakx50/edit?usp=sharing]
