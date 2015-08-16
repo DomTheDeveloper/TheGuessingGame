@@ -1,15 +1,15 @@
 package edu.oakland.classProject.test;
 
-import edu.oakland.classProject.production.*;
-import edu.oakland.classProject.production.cmdLine.*;
-import java.util.Arrays.*;
-import junit.framework.*;
+import junit.framework.TestCase;
+
+import edu.oakland.classProject.production.Main;
+
 /**
 * This class holds all of the JUnit test cases for testing the Core class.
 * @version: v1.0 20150816
 */
 
-public class MainTest extends TestCase{
+public class EndToEndTest extends TestCase{
 	/*
 	This JUnit test package creates an instance of the game and then provides 
 	simulated user input. The following 3 tests are used to show that the user
@@ -39,68 +39,48 @@ public class MainTest extends TestCase{
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('S');
 
-		MockCore core = new MockCore();
-		core.setMaxNumOfGuesses(maxNumOfGuesses_Simple);
-		core.setUpperBoundComputed(upperBoundComputed_Simple);
-
-		Main main = new Main(display, core);
+		Main main = new Main(display);
 
 		assertTrue(main.startGame());
 		assertEquals(maxNumOfGuesses_Simple, display.getMaxNumOfGuesses());
-		assertEquals(upperBoundComputed_Simple,display.getUpperBoundComputed());
-
-		assertTrue(core.isReinitialized());
+		assertEquals(upperBoundComputed_Simple, display.getUpperBoundComputed());
 	}
 	public void testStartGame_Advanced(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('A');
 		display.setUpperBoundSelection(maxNumOfGuesses_Advanced);
 
-		MockCore core = new MockCore();
-		core.setMaxNumOfGuesses(maxNumOfGuesses_Advanced);
-		core.setUpperBoundComputed(upperBoundComputed_Advanced);
-
-		Main main = new Main(display, core);
+		Main main = new Main(display);
 
 		assertTrue(main.startGame());
 		assertEquals(maxNumOfGuesses_Advanced, display.getMaxNumOfGuesses());
 		assertEquals(upperBoundComputed_Advanced, display.getUpperBoundComputed());
 
-		assertTrue(core.isReinitialized());
-		assertEquals(core.getUpperBoundInput(), display.getUpperBoundSelection());
+		assertEquals(maxNumOfGuesses_Advanced, display.getUpperBoundSelection());
 	}
 	public void testQuit(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('Q');
 
-		MockCore core = new MockCore();
-
-		Main main = new Main(display, core);
+		Main main = new Main(display);
 
 		assertFalse(main.startGame());
-
-		assertTrue(core.isReinitialized());
 	}
 	public void testMakeGuess_GuessNotMade(){
 		MockDisplay display = new MockDisplay();
+		display.setPlaySelection('A');
+		display.setUpperBoundSelection(1);
 
-		MockCore core = new MockCore();
-		core.setHasGameEnded(true);
+		Main main = new Main(display);
 
-		Main main = new Main(display, core);
-
+		main.startGame();
 		assertFalse(main.makeGuess());
 	}
 	public void testMakeGuess_InitialGuess(){
 		MockDisplay display = new MockDisplay();
 		display.setPlaySelection('S');
 
-		MockCore core = new MockCore();
-		core.setHasGameEnded(false);
-		core.setGuess(initialGuess);
-		core.setGuessIteration(initialGuessIteration);
-
-		Main main = new Main(display, core);
+		Main main = new Main(display);
 
 		main.startGame();
 
@@ -113,12 +93,7 @@ public class MainTest extends TestCase{
 		display.setPlaySelection('S');
 		display.setGuessFeedback(guessFeedback);
 
-		MockCore core = new MockCore();
-		core.setHasGameEnded(false);
-		core.setGuess(subsequentGuess);
-		core.setGuessIteration(subsequentGuessIteration);
-
-		Main main = new Main(display, core);
+		Main main = new Main(display);
 
 		main.startGame();
 		main.makeGuess();
@@ -128,18 +103,36 @@ public class MainTest extends TestCase{
 		assertEquals(subsequentGuess,display.getCurrentGuess());
 		assertEquals(subsequentGuessIteration,display.getCurrentGuessIteration());
 	}
+	public void testGiveFeedback(){
+		MockDisplay display = new MockDisplay();
+		display.setGuessFeedback(guessFeedback);
+
+		Main main = new Main(display);
+
+		main.giveFeedback();
+		assertEquals(guessFeedback, display.getGuessFeedback());
+	}
 	public void testEndGame(){
 		MockDisplay display = new MockDisplay();
+		display.setPlaySelection('S');
 
-		MockCore core = new MockCore();
-		core.setGuess(endGuess);
-		core.setGuessIteration(endGuessIteration);
+		Main main = new Main(display);
 
-		Main main = new Main(display, core);
+		main.startGame();
+
+		main.makeGuess();
+
+		display.setGuessFeedback("lower");
+		main.giveFeedback();
+		assertTrue(main.makeGuess());
+
+		display.setGuessFeedback("equal");
+		main.giveFeedback();
+		assertFalse(main.makeGuess());
 
 		main.endGame();
 
-		assertEquals(endGuess, display.getEndGuess());
-		assertEquals(endGuessIteration, display.getEndGuessIteration());
+		assertEquals(256, display.getEndGuess());
+		assertEquals(2, display.getEndGuessIteration());
 	}
 }
