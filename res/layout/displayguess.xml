@@ -36,12 +36,12 @@
         android:layout_height="wrap_content"
         android:text="↑"
         android:textSize="26dp"
+        android:textColor="#ffc8c8c8"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="?android:attr/selectableItemBackground"
         android:tag="higher"
-        android:onClick="btnFeedback_OnClick"
-        />
+        android:onClick="btnFeedback_OnClick" />
     <Button
         android:id="@+id/btnEquals"
         android:layout_width="wrap_content"
@@ -49,21 +49,21 @@
         android:text="="
         android:tag="equal"
         android:textSize="17dp"
+        android:textColor="#ffc8c8c8"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="?android:attr/selectableItemBackground"
-        android:onClick="btnFeedback_OnClick"
-        />
+        android:onClick="btnFeedback_OnClick" />
     <Button
         android:id="@+id/btnLower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="↓"
         android:textSize="26dp"
+        android:textColor="#ffc8c8c8"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:background="?android:attr/selectableItemBackground"
         android:tag="lower"
-        android:onClick="btnFeedback_OnClick"
-        />
+        android:onClick="btnFeedback_OnClick" />
 </LinearLayout>
