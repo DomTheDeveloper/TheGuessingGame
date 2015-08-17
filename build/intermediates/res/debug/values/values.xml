@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Administrator/school/337/git/TheGuessingGame/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Dominic/Documents/GitHub/TheGuessingGame/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/Administrator/school/337/git/TheGuessingGame/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Dominic/Documents/GitHub/TheGuessingGame/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="advanced_instructions_text">Please choose a number between 1 and the Upper Bound of your choice:</string>
